@@ -4,6 +4,6 @@ innehåll i en order:
     datum
 
 orderrader:
-   typ antal  a-pris
+   typ (artikelnr) antal a-pris
 
 förvändat leveransdatum
