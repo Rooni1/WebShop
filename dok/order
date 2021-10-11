@@ -1,0 +1,9 @@
+innehåll i en order:
+    kund (kundnr)
+    leveransadress
+    datum
+
+orderrader:
+   typ antal  a-pris
+
+förvändat leveransdatum
