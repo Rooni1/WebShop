@@ -7,5 +7,6 @@ namespace WebShop.ViewModels
 {
     public class UpdateProductViewModel
     {
+
     }
 }
