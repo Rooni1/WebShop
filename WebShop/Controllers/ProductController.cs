@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using WebShop.Models.Entities;
 using WebShop.Models.Service;
 using WebShop.ViewModels;
 
@@ -17,11 +18,13 @@ namespace WebShop.Controllers
             _productService = productService;
         }
 
+
         [HttpGet]
         [Route("GetAll")]
         public ActionResult<List<ProductViewModel>> GetAll()
+
         {
-            List<ProductViewModel> products = _productService.All();
+            List<Product> products = _productService.All().products;
 
             return Ok(products);
 
@@ -30,7 +33,7 @@ namespace WebShop.Controllers
         [HttpGet("{id}")]
         public ActionResult<ProductViewModel> Get(int id)
         {
-            ProductViewModel product = _productService.FindBy(id);
+            Product product =  _productService.FindBy(id);
 
             return Ok(product);
         }
@@ -38,6 +41,7 @@ namespace WebShop.Controllers
         [HttpPost]
         public ActionResult Create([FromBody] CreateProductViewModel product)
         {
+            _productService.Add(product);
             return NoContent();
         }
 

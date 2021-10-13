@@ -9,10 +9,10 @@ namespace WebShop.Models.Repo
 {
     public interface IProductRepo
     {
-        Product Create(CreateProductViewModel createProductVM);
+        void Create(CreateProductViewModel createProductVM);
         List<Product> Read();
         Product Read(int id);
         Product Update(Product product);
-        bool Delete(Product product);
+        void Delete(Product product);
     }
 }
