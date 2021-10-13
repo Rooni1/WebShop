@@ -16,7 +16,11 @@ namespace WebShop.Models.Service
 
         public List<ProductViewModel> All()
         {
-            return new List<ProductViewModel>();
+            List<ProductViewModel> products = new List<ProductViewModel>();
+            ProductViewModel product = new ProductViewModel { id = "1", name = "Gunnebo" };
+            products.Add(product);
+
+            return products;
         }
 
         public void Edit(int id, UpdateProductViewModel product)
