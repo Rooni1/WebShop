@@ -9,32 +9,27 @@ namespace WebShop.Models.Service
 {
     public class ProductService : IProductService
     {
-        public Product Add(CreateProductViewModel createProductVM)
+        public void Add(CreateProductViewModel product)
         {
             throw new NotImplementedException();
         }
 
-        public ProductViewModel All()
+        public List<ProductViewModel> All()
         {
             throw new NotImplementedException();
         }
 
-        public Product Edit(int id, Product product)
+        public void Edit(int id, UpdateProductViewModel product)
         {
             throw new NotImplementedException();
         }
 
-        public ProductViewModel FindBy(ProductViewModel search)
+        public ProductViewModel FindBy(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Product FindBy(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Remove(int id)
+        public void Remove(int id)
         {
             throw new NotImplementedException();
         }
