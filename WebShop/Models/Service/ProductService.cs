@@ -24,24 +24,35 @@ namespace WebShop.Models.Service
 
         public ProductViewModel All()
         {
+<<
             ProductViewModel productVVM = new ProductViewModel { products = _productRepo.Read() };
             return productVVM;
+
+            return new List<ProductViewModel>();
+
         }
 
         public void Edit(int id, UpdateProductViewModel product)
         {
-            throw new NotImplementedException();
         }
 
         public Product FindBy(int id)
         {
+<
             return _productRepo.Read(id);
+
+            return new ProductViewModel();
+
         }
 
         public void Remove(int id)
         {
+
             Product productToRemove = _productRepo.Read(id);
             _productRepo.Delete(productToRemove);
+
+            
+
         }
     }
 }
