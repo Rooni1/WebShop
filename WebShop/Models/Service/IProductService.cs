@@ -10,8 +10,8 @@ namespace WebShop.Models.Service
     public interface IProductService
     {
         void Add(CreateProductViewModel product);
-        ProductViewModel All();
-        Product FindBy(int id);
+        List<ProductViewModel> All();
+        ProductViewModel FindBy(int id);
         void Edit(int id, UpdateProductViewModel product);
         void Remove(int id);
     }
