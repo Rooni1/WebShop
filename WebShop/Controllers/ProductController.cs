@@ -24,7 +24,7 @@ namespace WebShop.Controllers
         public ActionResult<List<ProductViewModel>> GetAll()
 
         {
-            List<Product> products = _productService.All().products;
+            List<ProductViewModel> products = _productService.All();
 
             return Ok(products);
 
@@ -33,7 +33,7 @@ namespace WebShop.Controllers
         [HttpGet("{id}")]
         public ActionResult<ProductViewModel> Get(int id)
         {
-            Product product =  _productService.FindBy(id);
+            ProductViewModel product =  _productService.FindBy(id);
 
             return Ok(product);
         }
