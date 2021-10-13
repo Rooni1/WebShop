@@ -16,22 +16,21 @@ namespace WebShop.Models.Service
 
         public List<ProductViewModel> All()
         {
-            throw new NotImplementedException();
+            return new List<ProductViewModel>();
         }
 
         public void Edit(int id, UpdateProductViewModel product)
         {
-            throw new NotImplementedException();
         }
 
         public ProductViewModel FindBy(int id)
         {
-            throw new NotImplementedException();
+            return new ProductViewModel();
         }
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
