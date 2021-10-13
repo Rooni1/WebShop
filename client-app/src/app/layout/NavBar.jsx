@@ -7,7 +7,7 @@ export default function NavBar() {
     <Row>
       <Col xs={12} md={12}>
       <Navbar  className="navbar-dark fixed-top bg-primary ps-5 pe-5">
-         <Navbar.Brand className="p-0" href="#home">Skruv & spik</Navbar.Brand>
+         <Navbar.Brand className="p-0" href="#home">E-commerce</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
