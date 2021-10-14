@@ -15,7 +15,6 @@ export default function NavBar() {
               <Nav.Link className="text-white" href="/">Products</Nav.Link>
               <Nav.Link className="text-white" href="/">Basket</Nav.Link>
               <Nav.Link className="text-white" href="/">Checkout</Nav.Link>
-              <Nav.Link className="text-white" href="/">City</Nav.Link>
             </Nav>
           </Navbar.Collapse>
       </Navbar>
