@@ -41,7 +41,7 @@ namespace WebShop.Models.Repo
         /// Product - modifierad instans
         /// </returns>
         /// 
-        Product Update(Product product);
+        void Update(Product product);
         void Delete(Product product);
     }
 }
