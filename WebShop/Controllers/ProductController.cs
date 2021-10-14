@@ -1,16 +1,60 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using WebShop.Models.Entities;
+using WebShop.Models.Service;
+using WebShop.ViewModels;
 
 namespace WebShop.Controllers
 {
-    public class ProductController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ProductController : ControllerBase
     {
-        public IActionResult ProductView()
+        private readonly IProductService _productService;
+
+        public ProductController(
+           IProductService productService)
         {
-            return View();
+            _productService = productService;
+        }
+
+
+        [HttpGet]
+        [Route("GetAll")]
+        public ActionResult<List<ProductViewModel>> GetAll()
+
+        {
+            List<ProductViewModel> products = _productService.All();
+
+            return Ok(products);
+
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<ProductViewModel> Get(int id)
+        {
+            ProductViewModel product =  _productService.FindBy(id);
+
+            return Ok(product);
+        }
+
+        [HttpPost]
+        public ActionResult Create([FromBody] CreateProductViewModel product)
+        {
+            _productService.Add(product);
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Update([FromBody] UpdateProductViewModel product)
+        {
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(string id)
+        {
+            return NoContent();
         }
     }
 }

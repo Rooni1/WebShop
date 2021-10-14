@@ -13,6 +13,5 @@ namespace WebShop.Models.Entities
         public int Quantity { get; set; }
         public Product Product { get; set; }
 
-
     }
 }

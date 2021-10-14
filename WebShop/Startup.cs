@@ -28,6 +28,19 @@ namespace WebShop
 	// This method gets called by the runtime. Use this method to add services to the container.
 	public void ConfigureServices(IServiceCollection services)
 	{
+	    services.AddCors(opt =>
+	    {
+		opt.AddPolicy("CorsPolicy", policy =>
+		{
+		    policy
+			.AllowAnyHeader()
+			.AllowAnyMethod()
+			.WithExposedHeaders("WWW-Authenticate")
+			.WithOrigins("http://localhost:3000")
+			.AllowCredentials();
+		});
+	    });
+
 	    services.AddScoped<IProductRepo, ProductRepo>();
 	    services.AddScoped<IProductService, ProductService>();
 	    services.AddControllersWithViews();
@@ -54,6 +67,8 @@ namespace WebShop
 	    app.UseRouting();
 
 	    app.UseAuthorization();
+
+	    app.UseCors("CorsPolicy");
 
 	    app.UseEndpoints(endpoints =>
 	    {

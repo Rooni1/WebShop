@@ -3,40 +3,55 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebShop.Models.Entities;
+using WebShop.Models.Repo;
 using WebShop.ViewModels;
 
 namespace WebShop.Models.Service
 {
+   
     public class ProductService : IProductService
     {
-        public Product Add(CreateProductViewModel createProductVM)
+        private readonly IProductRepo _productRepo;
+        public ProductService(IProductRepo productRepo)
         {
-            throw new NotImplementedException();
+            productRepo = _productRepo;
+
+        }
+        public void Add(CreateProductViewModel product)
+        {
+            _productRepo.Create(product);
         }
 
-        public ProductViewModel All()
+        public List<ProductViewModel> All()
         {
-            throw new NotImplementedException();
+            List<ProductViewModel> products = new List<ProductViewModel>();
+            ProductViewModel product = new ProductViewModel { id = "1", name = "Gunnebo" };
+            products.Add(product);
+
+            return products;
         }
 
-        public Product Edit(int id, Product product)
+        public void Edit(int id, UpdateProductViewModel product)
         {
-            throw new NotImplementedException();
         }
 
-        public ProductViewModel FindBy(ProductViewModel search)
+        public ProductViewModel FindBy(int id)
         {
-            throw new NotImplementedException();
+
+            //return _productRepo.Read(id);
+
+            return new ProductViewModel();
+
         }
 
-        public Product FindBy(int id)
+        public void Remove(int id)
         {
-            throw new NotImplementedException();
-        }
 
-        public bool Remove(int id)
-        {
-            throw new NotImplementedException();
+            Product productToRemove = _productRepo.Read(id);
+            _productRepo.Delete(productToRemove);
+
+            
+
         }
     }
 }

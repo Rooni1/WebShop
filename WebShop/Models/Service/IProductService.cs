@@ -9,11 +9,10 @@ namespace WebShop.Models.Service
 {
     public interface IProductService
     {
-        Product Add(CreateProductViewModel createProductVM);
-        ProductViewModel All();
-        ProductViewModel FindBy(ProductViewModel search);
-        Product FindBy(int id);
-        Product Edit(int id, Product product);
-        bool Remove(int id);
+        void Add(CreateProductViewModel product);
+        List<ProductViewModel> All();
+        ProductViewModel FindBy(int id);
+        void Edit(int id, UpdateProductViewModel product);
+        void Remove(int id);
     }
 }
