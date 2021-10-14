@@ -14,7 +14,7 @@ namespace WebShop.Models.Service
         private readonly IProductRepo _productRepo;
         public ProductService(IProductRepo productRepo)
         {
-            productRepo = _productRepo;
+            _productRepo = productRepo;
 
         }
         public void Add(CreateProductViewModel product)
@@ -24,9 +24,18 @@ namespace WebShop.Models.Service
 
         public List<ProductViewModel> All()
         {
+            //List<ProductViewModel> products = new List<ProductViewModel>();
+            //ProductViewModel product = new ProductViewModel { id = "1", name = "Gunnebo" };
+            List<Product> entities = _productRepo.Read();
             List<ProductViewModel> products = new List<ProductViewModel>();
-            ProductViewModel product = new ProductViewModel { id = "1", name = "Gunnebo" };
-            products.Add(product);
+            foreach(Product entity in entities)
+            {
+                ProductViewModel product = new ProductViewModel { 
+                    id = entity.ProductId.ToString(), 
+                    name = entity.ProductName 
+                };
+                products.Add(product);
+            }
 
             return products;
         }
