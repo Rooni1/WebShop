@@ -47,14 +47,18 @@ namespace WebShop.Controllers
         }
 
         [HttpPut("{id}")]
+        [Route("Update")]
         public IActionResult Update([FromBody] UpdateProductViewModel product)
         {
+            //_productService.Edit(product);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public ActionResult Delete(string id)
+        [Route("Delete")]
+        public ActionResult Delete(int id)
         {
+            _productService.Remove(id);
             return NoContent();
         }
     }

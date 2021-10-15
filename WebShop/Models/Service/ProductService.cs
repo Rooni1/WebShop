@@ -32,7 +32,11 @@ namespace WebShop.Models.Service
             {
                 ProductViewModel product = new ProductViewModel { 
                     id = entity.ProductId.ToString(), 
-                    name = entity.ProductName 
+                    name = entity.ProductName,
+                    ProductDescription = entity.ProductDescription,
+                    ProductLength = entity.ProductLength,
+                    ProductDimension = entity.ProductDimension,
+                    ProductPrice = entity.ProductPrice
                 };
                 products.Add(product);
             }
@@ -42,6 +46,13 @@ namespace WebShop.Models.Service
 
         public void Edit(int id, UpdateProductViewModel product)
         {
+            Product productToUpdate = _productRepo.Read(id);
+            productToUpdate.ProductName = product.ProductName;
+            productToUpdate.ProductDescription = product.ProductDescription;
+            productToUpdate.ProductLength = product.ProductLength;
+            productToUpdate.ProductDimension = product.ProductDimension;
+            productToUpdate.ProductPrice = product.ProductPrice;
+            _productRepo.Update(productToUpdate);
         }
 
         public ProductViewModel FindBy(int id)
