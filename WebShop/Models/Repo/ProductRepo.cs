@@ -59,9 +59,10 @@ namespace WebShop.Models.Repo
             return null;
         }
 
-        public Product Update(Product product)
+        public void Update(Product product)
         {
-            throw new NotImplementedException();
+            _dBWebShop.Update(product);
+            _dBWebShop.SaveChanges();
         }
     }
 }
