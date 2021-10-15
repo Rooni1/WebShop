@@ -37,6 +37,10 @@
   }
 }
 
+a {
+  text-decoration: none !important;
+}
+
 .cart-no {
   position: absolute;
   min-height: 25px;
