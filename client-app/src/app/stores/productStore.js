@@ -27,7 +27,6 @@ export default class ProductStore {
   }
 
   setProduct = (product) => {
-    console.log('debug');
     this.productRegistry.set(product.id, product);
   }
 
