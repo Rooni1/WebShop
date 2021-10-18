@@ -2,6 +2,7 @@ import React, { ChangeEvent, useEffect, useState }  from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 
 import { useStore } from '../../../app/stores/store';
+import { history } from '../../..';
 import ProductList from './ProductList';
 
 export default function Dashboard() {
@@ -11,6 +12,10 @@ export default function Dashboard() {
   useEffect(() => {
     if ((productRegistry.size <= 1)) loadProducts();
   }, [productRegistry.size, loadProducts]);
+
+  function handleClick(id) {
+    history.push('/shop/' + id);
+  };
 
   return (
     <>
@@ -68,7 +73,7 @@ export default function Dashboard() {
                     <span class="mb-2">110.00</span>
                     <div className="mt-auto btn-group">
                       <button type="button" className="me-2 btn btn-outline-secondary fa fa-shopping-cart" style={{borderRadius: "5px"}}></button>
-                      <button type="button" className="btn btn-outline-secondary" style={{borderRadius: "5px"}}>View</button>
+                      <button type="button" onClick={() => handleClick(2)} className="btn btn-outline-secondary" style={{borderRadius: "5px"}}>View</button>
                     </div>
                   </div>
                 </div>
@@ -84,7 +89,7 @@ export default function Dashboard() {
                     <span class="mb-2">110.00</span>
                     <div className="mt-auto btn-group">
                       <button type="button" className="me-2 btn btn-outline-secondary fa fa-shopping-cart" style={{borderRadius: "5px"}}></button>
-                      <button type="button" className="btn btn-outline-secondary" style={{borderRadius: "5px"}}>View</button>
+                      <button type="button" href={`/shop/2`} className="btn btn-outline-secondary" style={{borderRadius: "5px"}}>View</button>
                     </div>
                   </div>
                 </div>
@@ -100,7 +105,7 @@ export default function Dashboard() {
                     <span class="mb-2">110.00</span>
                     <div className="mt-auto btn-group">
                       <button type="button" className="me-2 btn btn-outline-secondary fa fa-shopping-cart" style={{borderRadius: "5px"}}></button>
-                      <button type="button" className="btn btn-outline-secondary" style={{borderRadius: "5px"}}>View</button>
+                      <button type="button" href={`/shop/2`} className="btn btn-outline-secondary" style={{borderRadius: "5px"}}>View</button>
                     </div>
                   </div>
                 </div>
