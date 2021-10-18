@@ -10,7 +10,7 @@ export default observer(function ProductList() {
   const [list, setList] = useState([]);
   
   useEffect(() => {
-     setList(products);
+    setList(products);
   }, [productRegistry.size, products]);
 
   return (

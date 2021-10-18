@@ -7,13 +7,6 @@
   pointer-events: none;
 }
 
-
-
-body {
-  padding-top: 65px;
-}
-
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -42,4 +35,21 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.cart-no {
+  position: absolute;
+  min-height: 25px;
+  min-width: 25px;
+  border-radius: 50%;
+  font-size: 1em;
+  background: blue;
+  color: white;
+  text-align: center;
+  top: -12px;
+  right: 32px;
 }
