@@ -15,10 +15,10 @@ export default function NavBar() {
           <a className="p-2 text-dark" href="#">Contact</a>
         </nav>
       </div>
-      <div>  
-        <a className="position-relative me-2">
-          <i className="mr-5 fa fa-shopping-cart fa-2x text-dark"></i>
-          <div className="cart-no">5</div>
+      <div className="d-flex justify-content-center">  
+        <a className="position-relative me-2 ">
+          <i className="fa fa-shopping-cart fa-2x text-dark"></i>
+          <div className="cart-no mt-2">5</div>
         </a>
         <a className="btn btn-outline-primary">Login</a>
         <a className="ms-2 btn btn-outline-secondary">Sign up</a>
