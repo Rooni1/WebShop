@@ -1,4 +1,8 @@
-﻿using System;
+﻿//
+// Time-stamp: <2021-10-19 13:44:23 stefan>
+//
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,12 +12,9 @@ namespace WebShop.Models.Entities
 {
     public class Order
     {
-        [Key]
-        public int OrderId { get; set; } 
-        public DateTime OrderDate { get; set; }
-        public OrderItem OrderItem { get; set; }
-
-        
-
+	[Key]
+	public int OrderId { get; set; }
+	public DateTime OrderDate { get; set; }
+	public List<OrderItem> OrderItems { get; set; }
     }
 }
