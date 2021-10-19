@@ -5,11 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace WebShop.Models.Entities
-{
-    public class Category
-    {    
-    }
-
+{   
     public class Product
     {
         [Key]
@@ -21,8 +17,7 @@ namespace WebShop.Models.Entities
         public string ProductDescription { get; set; }   /// ytbehandling
         public float ProductLength { get; set; }         /// skaftets längd för skruv , höjd för en mutter
         public float ProductDimension  { get; set; }    /// gängstorlek
-        public float ProductPrice { get; set; }       
-        // public Category Category { get; set;}            //// kategori: mutter tum, skruv tum, skruv mm, mutter mm
+        public float ProductPrice { get; set; }            
         public List<OrderItem> OrderItems { get; set; } 
     }
 }
