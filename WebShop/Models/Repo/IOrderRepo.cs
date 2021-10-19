@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebShop.Models.Entities;
+using WebShop.ViewModels;
 
 namespace WebShop.Models.Repo
 {
@@ -11,7 +12,7 @@ namespace WebShop.Models.Repo
         //
         // hur man får en varukorg att bli en order i systemet (databasen)
         //
-        public Order Create();
+        void Create(CreateOrderViewModel createOrder);
 
         //
         // sökning efter en viss order
