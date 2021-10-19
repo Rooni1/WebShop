@@ -1,5 +1,5 @@
 ﻿//
-// Time-stamp: <2021-10-19 13:47:05 stefan>
+// Time-stamp: <2021-10-19 13:51:28 stefan>
 //
 
 using System;
@@ -14,11 +14,7 @@ namespace WebShop.Models.Entities
     {
 	[Key]
 	public int OrderId { get; set; }
-
 	public DateTime OrderDate { get; set; }
-	public DateTime OrderDate { get; set; }
-
-	public List<OrderItem> OrderItems { get; set; }
 	public List<OrderItem> OrderItems { get; set; }
     }
 }
