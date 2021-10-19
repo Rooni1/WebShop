@@ -22,9 +22,23 @@ namespace WebShop.Models.Repo
         /// <returns></returns>
         List<Product> Read();
 
-        
-        Product Read(int id);        
+        /// <summary>
+        /// Uppgifter om en viss produkt
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Product Read(int id);
+
+        /// <summary>
+        /// modifikation av läget för en viss produkt
+        /// </summary>
+        /// <param name="product"></param>
         void Update(Product product);
+
+        /// <summary>
+        /// borttagning av en viss produkt
+        /// </summary>
+        /// <param name="product"></param>
         void Delete(Product product);
     }
 }

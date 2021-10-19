@@ -37,8 +37,7 @@ namespace WebShop.Models.Repo
         public void Delete(Product product)
         {
             _dBWebShop.Remove(product);
-            _dBWebShop.SaveChanges(); // commit
-           
+            _dBWebShop.SaveChanges(); // commit           
         }
 
         /// <summary>
@@ -49,17 +48,13 @@ namespace WebShop.Models.Repo
         /// </returns>
         public List<Product> Read()
         {
-            return products = _dBWebShop.Product.ToList();
+            // return products = _dBWebShop.Product.ToList();
+
+            return _dBWebShop.Product.ToList();
         }
         
        
-        /// <summary>
-        /// alla produkter i en viss kategori (bult/skruv i mm, muttrar i mm, bult/skruv i tum, muttrar i tum, brickor)
-        /// </summary>      
-        //public List<Product> Read(DbLoggerCategory cat)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        
 
         /// <summary>
         /// Uppgifter om en viss artikel
