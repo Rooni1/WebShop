@@ -23,6 +23,7 @@ namespace WebShop.Models.Repo
                 OrderId = createOrder.OrderId,
                 OrderDate = createOrder.OrderDate
             };
+
             for (int i = 0; i < createOrder.OrderItems.Count;  i++)
             {
                 OrderItem itemsOrdered = new OrderItem
