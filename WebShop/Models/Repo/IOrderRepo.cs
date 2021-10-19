@@ -11,26 +11,32 @@ namespace WebShop.Models.Repo
 {
     public interface IOrderRepo
     {
-        //
-        // hur man får en varukorg att bli en order i systemet (databasen)
-        //
-        void Create(CreateOrderViewModel createOrder);
+	//
+	// hur man får en varukorg att bli en order i systemet (databasen)
+	//
+	void Create(CreateOrderViewModel createOrder);
 
-        //
-        // sökning efter en viss order
-        //
-        public Order FindById(int Id);
+	//
+	// sökning efter en viss order
+	//
+	public Order FindById(int Id);
 
-        //
-        // vilka order har en viss kund sedan tidigare
-        //
-        public List<Order> FindByCustomer(int CustomerId);
+	//
+	// vilka order har en viss kund sedan tidigare
+	//
+	public List<Order> FindByCustomer(int CustomerId);
+	public List<OrderItem> Read();
 
-        //
-        // modifiering av en viss order
-        //
-        // ersätter Edit i IOrderItem ?
-        //
-        public Order Edit(int Id);
+	//
+	// modifiering av en viss order
+	//
+	// ersätter Edit i IOrderItem ?
+	//
+	public void Edit(int id, UpdateOrderViewModel updateOrder);
+
+	///<summary>
+	/// borttagning av en order
+	///</summary>
+	public void Delete(int Id);
     }
 }
