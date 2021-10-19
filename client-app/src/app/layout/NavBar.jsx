@@ -4,21 +4,25 @@ import { Row, Col, Navbar, Nav } from 'react-bootstrap';
 
 export default function NavBar() {
   return (
-    <Row>
-      <Col xs={12} md={12}>
-      <Navbar  className="navbar-dark fixed-top bg-primary ps-5 pe-5">
-         <Navbar.Brand className="p-0" href="#home">E-commerce</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto">
-              <Nav.Link className="text-white" href="/">Home</Nav.Link>
-              <Nav.Link className="text-white" href="/">Products</Nav.Link>
-              <Nav.Link className="text-white" href="/">Basket</Nav.Link>
-              <Nav.Link className="text-white" href="/">Checkout</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-      </Navbar>
-      </Col>
-    </Row>
+    <div className="p-3 mb-3 bg-white shadow-sm d-flex flex-column flex-md-row align-items-center justify-content-between px-md-4 border-bottom">
+      <div className="d-flex flex-column align-items-center">
+        <h5 className="my-0 mr-md-auto font-weight-normal">E-commerce</h5>
+      </div>
+      <div className="d-flex flex-column flex-md-row align-items-center">
+        <nav className="my-2 my-md-0 mr-md-3 text-uppercase" style={{fontSize: "larger;"}}>
+          <a className="p-2 text-dark" href="#">Home</a>
+          <a className="p-2 text-dark" href="#">Shop</a>
+          <a className="p-2 text-dark" href="#">Contact</a>
+        </nav>
+      </div>
+      <div className="d-flex justify-content-center">  
+        <a className="position-relative me-2 ">
+          <i className="fa fa-shopping-cart fa-2x text-dark"></i>
+          <div className="cart-no mt-2">5</div>
+        </a>
+        <a className="btn btn-outline-primary">Login</a>
+        <a className="ms-2 btn btn-outline-secondary">Sign up</a>
+      </div>
+    </div>
   )
 }

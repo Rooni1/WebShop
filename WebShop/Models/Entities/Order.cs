@@ -11,8 +11,7 @@ namespace WebShop.Models.Entities
         [Key]
         public int OrderId { get; set; } 
         public DateTime OrderDate { get; set; }
-        public OrderItem OrderItem { get; set; }
-
+        public List<OrderItem> OrderItems { get; set; }
         
 
     }
