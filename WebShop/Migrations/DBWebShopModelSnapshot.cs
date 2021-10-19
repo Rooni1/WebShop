@@ -29,30 +29,23 @@ namespace WebShop.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("OrderItemId")
-                        .HasColumnType("int");
-
                     b.HasKey("OrderId");
-
-                    b.HasIndex("OrderItemId");
 
                     b.ToTable("Order");
                 });
 
             modelBuilder.Entity("WebShop.Models.Entities.OrderItem", b =>
                 {
-                    b.Property<int>("OrderItemId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
 
-                    b.Property<int?>("ProductId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.HasKey("OrderItemId");
+                    b.HasKey("OrderId", "ProductId");
 
                     b.HasIndex("ProductId");
 
@@ -86,18 +79,19 @@ namespace WebShop.Migrations
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("WebShop.Models.Entities.Order", b =>
-                {
-                    b.HasOne("WebShop.Models.Entities.OrderItem", "OrderItem")
-                        .WithMany()
-                        .HasForeignKey("OrderItemId");
-                });
-
             modelBuilder.Entity("WebShop.Models.Entities.OrderItem", b =>
                 {
+                    b.HasOne("WebShop.Models.Entities.Order", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("WebShop.Models.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
+                        .WithMany("OrderItems")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
