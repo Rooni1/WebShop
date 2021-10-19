@@ -10,9 +10,19 @@ namespace WebShop.Models.Repo
 {
     public interface IProductRepo
     {
+        /// <summary>
+        /// Inläggning av nya produkter i sortimentet
+        /// </summary>
+        /// <param name="createProductVM"></param>
         void Create(CreateProductViewModel createProductVM);        
+
+        /// <summary>
+        /// Uthämtning av sortimentslista
+        /// </summary>
+        /// <returns></returns>
         List<Product> Read();
-        // List<Product> Read(Category cat);
+
+        
         Product Read(int id);        
         void Update(Product product);
         void Delete(Product product);
