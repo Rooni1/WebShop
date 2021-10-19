@@ -46,6 +46,8 @@ namespace WebShop
 
 	    services.AddScoped<IProductRepo, ProductRepo>();
 	    services.AddScoped<IProductService, ProductService>();
+	    services.AddScoped<IOrderRepo, OrderRepo>();
+	    services.AddScoped<IOrderService, OrderService>();
 	    services.AddControllersWithViews();
 	    services.AddDbContext<DBWebShop>(options =>
 		    options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
