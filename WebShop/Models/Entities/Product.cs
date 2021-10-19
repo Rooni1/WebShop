@@ -23,6 +23,6 @@ namespace WebShop.Models.Entities
         public float ProductDimension  { get; set; }    /// gängstorlek
         public float ProductPrice { get; set; }       
         // public Category Category { get; set;}            //// kategori: mutter tum, skruv tum, skruv mm, mutter mm
-        // public List<OrderItem> OrderItems { get; set; } /// ska inte vara här
+        public List<OrderItem> OrderItems { get; set; } 
     }
 }

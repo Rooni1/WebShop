@@ -12,7 +12,7 @@ namespace WebShop.Models.Repo
     {
         void Create(CreateProductViewModel createProductVM);        
         List<Product> Read();
-        List<Product> Read(Category cat);
+        // List<Product> Read(Category cat);
         Product Read(int id);        
         void Update(Product product);
         void Delete(Product product);
