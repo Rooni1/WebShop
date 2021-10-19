@@ -2,33 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using WebShop.Models.Entities;
 
 namespace WebShop.Models.Repo
 {
     public interface IOrderRepo
     {
-        //
-        // hur man får en varukorg att bli en order i systemet (databasen)
-        //
         public Order Create();
-
-        //
-        // sökning efter en viss order
-        //
-        public Order FindById(int Id);
-
-        //
-        // vilka order har en viss kund sedan tidigare
-        //
+    public Order FindById(int Id);
         public List<Order> FindByCustomer(int CustomerId);
-
-        //
-        // modifiering av en viss order
-        //
-        //  ersätter Edit i IOrderItem ?
-        //
-        public Order Edit(int Id);
-
+              public Order Edit(int Id);
     }
 }

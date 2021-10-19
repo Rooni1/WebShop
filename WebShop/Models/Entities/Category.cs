@@ -1,0 +1,4 @@
+namespace WebShop.Models.Entities
+{
+  
+}
