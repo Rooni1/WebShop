@@ -15,7 +15,8 @@ namespace WebShop.Models.Entities
         public float ProductLength { get; set; }
         public float ProductDimension  { get; set; }
         public float ProductPrice { get; set; }
-       
+        public List<OrderItem> OrderItems { get; set; }
+
 
     }
 }

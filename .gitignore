@@ -362,13 +362,10 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-
 #
 # LaTeX hjälp filer
 #
-artiklar.aux
-artiklar.log
-hopslagning.aux
-hopslagning.log
-implement-interface.aux
-implement-interface.log
+dok/*.aux
+dok/*.log
+dok/*/*.aux
+dok/*/*.log
