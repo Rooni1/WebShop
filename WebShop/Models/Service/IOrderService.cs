@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebShop.Models.Entities;
 using WebShop.ViewModels;
 
 namespace WebShop.Models.Service
@@ -9,8 +10,8 @@ namespace WebShop.Models.Service
     public interface IOrderService
     {
         void Add(CreateOrderViewModel createorder);
-        List<OrderViewModel> All();
-        OrderViewModel FindBy(int id);
+        List<OrderItem> All();
+        Order FindBy(int id);
         void Edit(int id, UpdateOrderViewModel updateOrder);
         void Remove(int id);
     }

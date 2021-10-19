@@ -23,13 +23,16 @@ namespace WebShop.Models.Repo
         // vilka order har en viss kund sedan tidigare
         //
         public List<Order> FindByCustomer(int CustomerId);
+        public List<OrderItem> Read();
 
         //
         // modifiering av en viss order
         //
         //  ersätter Edit i IOrderItem ?
         //
-        public Order Edit(int Id);
+        public void Edit(int id, UpdateOrderViewModel updateOrder);
+
+        public void Delete(int Id);
 
     }
 }

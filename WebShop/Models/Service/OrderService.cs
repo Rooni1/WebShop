@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebShop.Models.Entities;
 using WebShop.Models.Repo;
 using WebShop.ViewModels;
 
@@ -20,24 +21,27 @@ namespace WebShop.Models.Service
             _orderRepo.Create(createOrder);
         }
 
-        public List<OrderViewModel> All()
+        public List<OrderItem> All()
         {
-            throw new NotImplementedException();
+            return _orderRepo.Read();
+
         }
 
         public void Edit(int id, UpdateOrderViewModel updateOrder)
         {
-            throw new NotImplementedException();
+           
+            _orderRepo.Edit(id, updateOrder);
         }
 
-        public OrderViewModel FindBy(int id)
+        public Order FindBy(int id)
         {
-            throw new NotImplementedException();
+            return _orderRepo.FindById(id);
+            
         }
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            _orderRepo.Delete(id);
         }
     }
 }

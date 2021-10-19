@@ -12,8 +12,7 @@ namespace WebShop.Controllers
     {
         private readonly IProductService _productService;
 
-        public ProductController(
-           IProductService productService)
+        public ProductController(IProductService productService)
         {
             _productService = productService;
         }
@@ -48,9 +47,9 @@ namespace WebShop.Controllers
 
         [HttpPut("{id}")]
         [Route("Update")]
-        public IActionResult Update([FromBody] UpdateProductViewModel product)
+        public IActionResult Update(int id, UpdateProductViewModel product)
         {
-            //_productService.Edit(product);
+            _productService.Edit(id,product);
             return NoContent();
         }
 
