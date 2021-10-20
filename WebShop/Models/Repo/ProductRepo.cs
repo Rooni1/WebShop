@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 using WebShop.Data;
 using WebShop.Models.Entities;
 using WebShop.ViewModels;
@@ -13,9 +12,10 @@ namespace WebShop.Models.Repo
     public class ProductRepo : IProductRepo
     {
 	private readonly DBWebShop _dBWebShop;
-	// behövs inte - i funktionerna där den används, där kan man ha en lokal
+	// de här variablerna i modulen, behövs de ?
+	// i funktionerna där den används, där kan man ha en lokal
 	// variabel för den eller ev som List, returnera dbWebShop.Product.ToList direkt
-	// private static List<Product> products = new List<Product>();
+	private static List<Product> products = new List<Product>();
 	public ProductRepo(DBWebShop dBWebShop)
 	{
 	    _dBWebShop = dBWebShop;
@@ -57,9 +57,9 @@ namespace WebShop.Models.Repo
 	/// </returns>
 	public List<Product> Read()
 	{
-	    // return products = _dBWebShop.Product.ToList();
+	    return products = _dBWebShop.Product.ToList();
 
-	    return _dBWebShop.Product.ToList();
+	    // return _dBWebShop.Product.ToList();
 	}
 
 	/// <summary>

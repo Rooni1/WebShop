@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 using WebShop.Data;
 using WebShop.Models.Entities;
 using WebShop.ViewModels;
@@ -30,16 +29,13 @@ namespace WebShop.Models.Repo
 	/// <param name="createOrder"></param>
 	public void Create(CreateOrderViewModel createOrder)
 	{
-	    Order newOrder = new Order()
-	    {
-		//OrderId = createOrder.OrderId,
-		OrderDate = createOrder.OrderDate
-	    };
-	    _dBWebShop.Add(newOrder);
-
-	    //
 	    // så här ?
-	    //
+	    // Order newOrder = new Order()
+	    // {
+	    //	//OrderId = createOrder.OrderId,
+	    //	OrderDate = createOrder.OrderDate
+	    // };
+	    // _dBWebShop.Add(newOrder);
 	    // foreach (OrderItem orderItem in createOrder.OrderItems)
 	    //     _dBWebShop.Add(new OrderItem
 	    //     {
@@ -47,7 +43,8 @@ namespace WebShop.Models.Repo
 	    //         ProductId = orderItem.ProductId,
 	    //         Quantity = orderItem.Quantity
 	    //     });
-	    // vänta med SaveChanges tills att hela ordern är adderad, därefter SaveChanges (COMMIT)
+	    //
+	    // väntar med SaveChanges tills att hela ordern är adderad, därefter SaveChanges (COMMIT)
 	    // _dBWebShop.SaveChanges();
 	    // Commit-tid
 	    // Märk
@@ -55,8 +52,13 @@ namespace WebShop.Models.Repo
 	    // inuti manifestet exv.)
 	    // Det borde innebära att commit inte går igenom därför att dbcontext.add falerar (brott
 	    // mot kravet/constraint att det ska existera en produkt med rätt ProduktId)
-	    //
-	    // eller så här :
+
+	    Order newOrder = new Order()
+	    {
+		//OrderId = createOrder.OrderId,
+		OrderDate = createOrder.OrderDate
+	    };
+	    _dBWebShop.Add(newOrder);
 	    _dBWebShop.SaveChanges();
 	    for (int i = 0; i < createOrder.OrderItems.Count;  i++)
 	    {
@@ -74,7 +76,7 @@ namespace WebShop.Models.Repo
 	}
 
 	/// <summary>
-	///
+	/// vad ska den göra ?
 	/// </summary>
 	/// <returns></returns>
 	// public List<OrderItem> Read()
@@ -92,10 +94,9 @@ namespace WebShop.Models.Repo
 	    return OrderItems;
 	}
 
-
 	/// <summary>
 	/// modifiering av en viss order
-	///  ersätter Edit i IOrderItem ?
+	/// ersätter Edit i IOrderItem ?
 	/// </summary>
 	/// <param name="Id"></param>
 	/// <returns></returns>
@@ -141,6 +142,17 @@ namespace WebShop.Models.Repo
 	    // och operationen för att addera en rad i databasen tar näst intill konstant tid om
 	    // det finns ett index som man kan kontrollera för att se om något redan finns.)
 	    //
+	    // orders = _dBWebShop.Order.ToList();
+	    //
+	    // foreach (Order item in orders)
+	    // {
+	    //     if (item.OrderId == Id)
+	    //     {
+	    //         return item;
+	    //     }
+	    // }
+	    // return null;
+
 	    return _dBWebShop.Order.Single(order => order.OrderId == Id);
 	}
 

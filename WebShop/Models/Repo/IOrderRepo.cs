@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 using WebShop.Models.Entities;
 using WebShop.ViewModels;
-using WebShop.Models.Repo;
 
 namespace WebShop.Models.Repo
 {
