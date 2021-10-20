@@ -73,6 +73,10 @@ function get (url) {
 function productList() {
   return get('/Product/GetAll');
 }
+
+function details(id) {
+  return get(`/People/Get/${id}`);
+}
   /**</PeopleVm>search: (name: string) => requests.get<PeopleVm>(`/People/Search/${name}`),
   details: (id: string) => requests.get<Person>(`/People/Get/${id}`),
   create: (person: Person) => axios.post<void>('/People/Create', person),
