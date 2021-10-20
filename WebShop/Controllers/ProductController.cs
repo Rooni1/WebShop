@@ -6,7 +6,7 @@ using WebShop.ViewModels;
 
 namespace WebShop.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -20,7 +20,6 @@ namespace WebShop.Controllers
 
 
         [HttpGet]
-        [Route("GetAll")]
         public ActionResult<List<ProductViewModel>> GetAll()
 
         {
