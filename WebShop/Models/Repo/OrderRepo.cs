@@ -15,7 +15,7 @@ namespace WebShop.Models.Repo
         {
             _dBWebShop = dBWebShop;
         }
-        public void Create(CreateOrderViewModel createOrder)
+        /**public void Create(CreateOrderViewModel createOrder)
         {
             Order newOrder = new Order
             {
@@ -38,7 +38,7 @@ namespace WebShop.Models.Repo
             }
 
 
-        }
+        }**/
 
         public Order Edit(int Id)
         {
