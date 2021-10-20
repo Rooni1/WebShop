@@ -25,7 +25,7 @@ namespace WebShop.Controllers
         public IActionResult Create([FromBody] CreateOrderViewModel createOrder)
         {
            
-            //_orderService.Add(createOrder);
+            _orderService.Add(createOrder);
             return View();
         }
 
@@ -33,7 +33,7 @@ namespace WebShop.Controllers
         [Route("GetAll")]
         public IActionResult GetAll()
         {
-            //_orderService.All();
+            _orderService.All();
             return View();
         }
 
@@ -42,7 +42,7 @@ namespace WebShop.Controllers
         public IActionResult FindById(int id)
         {
 
-            //_orderService.FindBy(id);
+            _orderService.FindBy(id);
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace WebShop.Controllers
         [Route("Update")]
         public IActionResult Update(int id, UpdateOrderViewModel oredrToUpdate)
         {
-            //_orderService.Edit(id, oredrToUpdate);
+            _orderService.Edit(id, oredrToUpdate);
             return NoContent();
         }
 

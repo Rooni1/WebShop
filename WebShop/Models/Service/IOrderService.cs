@@ -9,10 +9,10 @@ namespace WebShop.Models.Service
 {
     public interface IOrderService
     {
-        /**void Add(CreateOrderViewModel createorder);
+        void Add(CreateOrderViewModel createorder);
         List<OrderItem> All();
         Order FindBy(int id);
-        void Edit(int id, UpdateOrderViewModel updateOrder);**/
+        void Edit(int id, UpdateOrderViewModel updateOrder);
         void Remove(int id);
     }
 }
