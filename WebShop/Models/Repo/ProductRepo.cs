@@ -47,16 +47,7 @@ namespace WebShop.Models.Repo
 
         public Product Read(int id)
         {
-            products = _dBWebShop.Product.ToList();
-            
-            foreach (Product item in products)
-            {
-                if (item.ProductId == id)
-                {
-                    return item;
-                }
-            }
-            return null;
+            return _dBWebShop.Product.FirstOrDefault(x => x.ProductId == id);
         }
 
         public void Update(Product product)
