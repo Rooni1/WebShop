@@ -15,7 +15,7 @@ namespace WebShop.Models.Service
             _orderRepo = orderRepo;
                 
         }
-        public void Add(CreateOrderViewModel createOrder)
+        /**public void Add(CreateOrderViewModel createOrder)
         {
             _orderRepo.Create(createOrder);
         }
@@ -33,7 +33,7 @@ namespace WebShop.Models.Service
         public OrderViewModel FindBy(int id)
         {
             throw new NotImplementedException();
-        }
+        }**/
 
         public void Remove(int id)
         {
