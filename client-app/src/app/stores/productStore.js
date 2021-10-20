@@ -26,8 +26,34 @@ export default class ProductStore {
     }
   }
 
+  loadProduct = async (id) => {
+    let product = this.getProduct(id);
+    if (product) {
+      this.selectedProduct = product;
+      return product;
+    } else {
+      this.loadingInitial = true;
+      try {
+        product = await agent.Products.details(id);
+        this.setProduct(product);
+        //runInAction(() => {
+          this.selectedProduct = product;
+        //});        
+        this.setLoadingInitial(false);
+        return product;
+      } catch (error) {
+        console.log(error);
+        //this.setLoadingInitial(false);
+      }
+    }
+  }
+
   setProduct = (product) => {
     this.productRegistry.set(product.id, product);
+  }
+
+  getProduct = (id) => {
+    return this.productRegistry.get(id);
   }
 
   setLoadingInitial = (state) => {

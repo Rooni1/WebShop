@@ -21,19 +21,19 @@ axios.interceptors.response.use(async response => {
   switch (status) {
     case 400:
       if (typeof data === 'string') {
-        console.log(data);
+	console.log(data);
       }
       if (config.method === 'get' && data.errors.hasOwnProperty('id')) {
-        //history.push('/not-found');
+	//history.push('/not-found');
       }
       if (data.errors) {
-        const modalStateErrors = [];
-        for (const key in data.errors) {
-          if (data.errors[key]) {
-            modalStateErrors.push(data.errors[key]);
-          }
-          throw modalStateErrors.flat();
-        } 
+	const modalStateErrors = [];
+	for (const key in data.errors) {
+	  if (data.errors[key]) {
+	    modalStateErrors.push(data.errors[key]);
+	  }
+	  throw modalStateErrors.flat();
+	}
       }
       console.log('bad request');
       break;
@@ -62,7 +62,7 @@ axios.interceptors.response.use(async response => {
     return dataPromise
 **/
 
-function get (url) { 
+function get (url) {
     return axios.get(url).then((response) => response.data);
 }
   //</T>/post: <T> (url: string, body: {}) => axios.post<T>(url, body).then(responseBody),
@@ -72,6 +72,10 @@ function get (url) {
 
 function productList() {
   return get('/Product/GetAll');
+}
+
+function details(id) {
+  return get(`/People/Get/${id}`);
 }
   /**</PeopleVm>search: (name: string) => requests.get<PeopleVm>(`/People/Search/${name}`),
   details: (id: string) => requests.get<Person>(`/People/Get/${id}`),
