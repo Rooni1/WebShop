@@ -21,6 +21,11 @@ namespace WebShop.Models.Repo
             _dBWebShop = dBWebShop;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="createProductVM"></param>
         public void Create(CreateProductViewModel createProductVM)
         {
             Product newProduct = new Product {             
@@ -34,6 +39,10 @@ namespace WebShop.Models.Repo
             _dBWebShop.SaveChanges();   // commit            
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="product"></param>
         public void Delete(Product product)
         {
             _dBWebShop.Remove(product);
@@ -74,8 +83,8 @@ namespace WebShop.Models.Repo
             //return null;
 
             // Här kan vi få null som resultat
-            return _dBWebShop.Product
-                    .Single(product => product.ProductId == id);
+            return _dBWebShop
+                .Product.Single(product => product.ProductId == id);
         }
 
         ///

@@ -20,6 +20,11 @@ namespace WebShop.Controllers
                 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="createOrder"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("Create")]
         public IActionResult Create([FromBody] CreateOrderViewModel createOrder)
@@ -29,6 +34,10 @@ namespace WebShop.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetAll")]
         public IActionResult GetAll()
@@ -37,6 +46,11 @@ namespace WebShop.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("FindById")]
         public IActionResult FindById(int id)
@@ -46,6 +60,11 @@ namespace WebShop.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         [Route("Delete")]
         public ActionResult Delete(int id)
@@ -54,6 +73,12 @@ namespace WebShop.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="oredrToUpdate"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         [Route("Update")]
         public IActionResult Update(int id, UpdateOrderViewModel oredrToUpdate)
