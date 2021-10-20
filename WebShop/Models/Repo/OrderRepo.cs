@@ -144,16 +144,16 @@ namespace WebShop.Models.Repo
 	    //
 	    // orders = _dBWebShop.Order.ToList();
 	    //
-	    // foreach (Order item in orders)
-	    // {
-	    //     if (item.OrderId == Id)
-	    //     {
-	    //         return item;
-	    //     }
-	    // }
-	    // return null;
+	    foreach (Order item in orders)
+	    {
+		if (item.OrderId == Id)
+		{
+		    return item;
+		}
+	    }
+	    return null;
 
-	    return _dBWebShop.Order.Single(order => order.OrderId == Id);
+	    // return _dBWebShop.Order.Single(order => order.OrderId == Id);
 	}
 
 	public void Delete(int Id)
