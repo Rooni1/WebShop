@@ -23,7 +23,7 @@ export default function NavBar() {
       <div className="d-flex justify-content-center">
 	<a className="position-relative me-2 ">
 	  <i className="fa fa-shopping-cart fa-2x text-dark" onClick={handleClick}></i>
-	    <div className="mt-2 cart-no">5</div>
+	  <div className="mt-2 cart-no">5</div>
 	</a>
 	<a className="btn btn-outline-primary">Login</a>
 	<a className="ms-2 btn btn-outline-secondary">Sign up</a>

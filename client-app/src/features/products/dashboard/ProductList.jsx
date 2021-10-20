@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Row, Button } from 'react-bootstrap';
 
 import { useStore } from '../../../app/stores/store';
+import { history } from '../../..';
 
 export default observer(function ProductList() {
   const {productStore} = useStore();
@@ -13,27 +14,36 @@ export default observer(function ProductList() {
     setList(products);
   }, [productRegistry.size, products]);
 
+  function handleClick(id) {
+    history.push('/shop/' + id);
+  };
+
   return (
-    <Row className="mt-4 table-responsive ms-0">
-        <table className="table table-bordered">
-          <thead>
-              <tr>
-                  <td className="col-sm-1 fw-bold">Id</td>
-                  <td className="col-sm-4 fw-bold">Name</td>
-                  <td className="col-sm-7"></td>
-              </tr>
-          </thead>
-          <tbody>
-            {list && list.map(product => (
-              <tr key={product.id}>
-                <td className="col-sm-1">{product.id}</td>
-                <td className="col-sm-4">{product.name}</td>
-                <td className="text-center col-sm-7">
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </Row>
+    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {list && list.map(product => (
+        
+              <div className="col" key={product.id}>
+                <div className="shadow-sm card">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Screw_for_wood.JPG/256px-Screw_for_wood.JPG" alt=""/>
+                  
+                  <div className="card-body d-flex flex-column">
+                    <a href="#">
+                      <h6 className="text-uppercase">{product.name}</h6>
+                    </a>
+                    <span class="mb-2">{product.productPrice}</span>
+                    <div className="mt-auto btn-group">
+                      <button type="button" className="me-2 btn btn-outline-secondary fa fa-shopping-cart" style={{borderRadius: "5px"}}></button>
+                      <button type="button" onClick={() => handleClick(product.id)} className="btn btn-outline-secondary" style={{borderRadius: "5px"}}>View</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            
+      ))};
+      </div>
+
+
+
   )
 });

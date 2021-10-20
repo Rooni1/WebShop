@@ -12,98 +12,85 @@ namespace WebShop.Models.Repo
 {
     public class ProductRepo : IProductRepo
     {
-        private readonly DBWebShop _dBWebShop;
-        // behövs inte - i funktionerna där den används, där kan man ha en lokal
-        // variabel för den eller ev som List, returnera dbWebShop.Product.ToList direkt
-        // private static List<Product> products = new List<Product>();
-        public ProductRepo(DBWebShop dBWebShop)
-        {
-            _dBWebShop = dBWebShop;
-        }
+	private readonly DBWebShop _dBWebShop;
+	// behövs inte - i funktionerna där den används, där kan man ha en lokal
+	// variabel för den eller ev som List, returnera dbWebShop.Product.ToList direkt
+	// private static List<Product> products = new List<Product>();
+	public ProductRepo(DBWebShop dBWebShop)
+	{
+	    _dBWebShop = dBWebShop;
+	}
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="createProductVM"></param>
-        public void Create(CreateProductViewModel createProductVM)
-        {
-            Product newProduct = new Product {             
-                ProductName = createProductVM.ProductName,
-                ProductDescription = createProductVM.ProductDescription,
-                ProductDimension = createProductVM.ProductDimension,
-                ProductLength = createProductVM.ProductLength,
-                ProductPrice = createProductVM.ProductPrice
-             };
-            _dBWebShop.Add(newProduct);
-            _dBWebShop.SaveChanges();   // commit            
-        }
+	/// <summary>
+	///
+	/// </summary>
+	/// <param name="createProductVM"></param>
+	public void Create(CreateProductViewModel createProductVM)
+	{
+	    Product newProduct = new Product {
+		ProductName = createProductVM.ProductName,
+		ProductDescription = createProductVM.ProductDescription,
+		ProductDimension = createProductVM.ProductDimension,
+		ProductLength = createProductVM.ProductLength,
+		ProductPrice = createProductVM.ProductPrice
+	     };
+	    _dBWebShop.Add(newProduct);
+	    _dBWebShop.SaveChanges();   // commit
+	}
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="product"></param>
-        public void Delete(Product product)
-        {
-            _dBWebShop.Remove(product);
-            _dBWebShop.SaveChanges(); // commit           
-        }
+	/// <summary>
+	///
+	/// </summary>
+	/// <param name="product"></param>
+	public void Delete(Product product)
+	{
+	    _dBWebShop.Remove(product);
+	    _dBWebShop.SaveChanges(); // commit
+	}
 
-        /// <summary>
-        /// Dyr funktion - alla produkter i databasen
-        /// </summary>
-        /// <returns>
-        /// en lista med instanser
-        /// </returns>
-        public List<Product> Read()
-        {
-            // return products = _dBWebShop.Product.ToList();
+	/// <summary>
+	/// Dyr funktion - alla produkter i databasen
+	/// </summary>
+	/// <returns>
+	/// en lista med instanser
+	/// </returns>
+	public List<Product> Read()
+	{
+	    // return products = _dBWebShop.Product.ToList();
 
-            return _dBWebShop.Product.ToList();
-        }
-                       
-        /// <summary>
-        /// Uppgifter om en viss artikel
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>
-        /// Product - en instans av den artikel det gäller
-        /// </returns>
-        public Product Read(int id)
-        {
-            // products = _dBWebShop.Product.ToList(); // EN produkt inte flera.
+	    return _dBWebShop.Product.ToList();
+	}
 
-            //foreach (Product item in products)
-            //{
-            //    if (item.ProductId == id)
-            //    {
-            //        return item;
-            //    }
-            //}
-            //return null;
+	/// <summary>
+	/// Uppgifter om en viss artikel
+	/// </summary>
+	/// <param name="id"></param>
+	/// <returns>
+	/// Product - en instans av den artikel det gäller
+	/// </returns>
+	public Product Read(int id)
+	{
+	    return _dBWebShop.Product.FirstOrDefault(x => x.ProductId == id);
+	}
 
-            // Här kan vi få null som resultat
-            return _dBWebShop
-                .Product.Single(product => product.ProductId == id);
-        }
-
-        ///
-        /// något med en viss artikel har ändrats ?
-        /// <summary>
-        ///  pris ?
-        ///  ska den spärras för order ?
-        /// </summary>
-        /// <param name="product">
-        /// Product - en instans av den produkt som ska modifieras
-        /// </param>
-        /// <returns>
-        /// Product - modifierad instans
-        /// </returns>
-        /// 
-        public void Update(Product product)
-        {
-            _dBWebShop.Update(product);
-            _dBWebShop.SaveChanges();
-        }
+	///
+	/// något med en viss artikel har ändrats ?
+	/// <summary>
+	///  pris ?
+	///  ska den spärras för order ?
+	/// </summary>
+	/// <param name="product">
+	/// Product - en instans av den produkt som ska modifieras
+	/// </param>
+	/// <returns>
+	/// Product - modifierad instans
+	/// </returns>
+	///
+	public void Update(Product product)
+	{
+	    _dBWebShop.Update(product);
+	    _dBWebShop.SaveChanges();
+	}
     }
 }

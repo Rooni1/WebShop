@@ -17,11 +17,9 @@ namespace WebShop.Controllers
 	    _productService = productService;
 	}
 
-
 	[HttpGet]
 	[Route("GetAll")]
 	public ActionResult<List<ProductViewModel>> GetAll()
-
 	{
 	    List<ProductViewModel> products = _productService.All();
 

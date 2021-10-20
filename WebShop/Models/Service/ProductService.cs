@@ -58,9 +58,19 @@ namespace WebShop.Models.Service
         public ProductViewModel FindBy(int id)
         {
 
-            //return _productRepo.Read(id);
+            Product product = _productRepo.Read(id);
 
-            return new ProductViewModel();
+            ProductViewModel model = new ProductViewModel
+            {
+                id = product.ProductId.ToString(),
+                name = product.ProductName,
+                ProductDescription = product.ProductDescription,
+                ProductLength = product.ProductLength,
+                ProductDimension = product.ProductDimension,
+                ProductPrice = product.ProductPrice
+            };
+
+            return model;
 
         }
 
