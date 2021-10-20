@@ -28,7 +28,8 @@ namespace WebShop.Models.Repo
 	/// <param name="createProductVM"></param>
 	public void Create(CreateProductViewModel createProductVM)
 	{
-	    Product newProduct = new Product {
+	    Product newProduct = new Product
+	    {
 		ProductName = createProductVM.ProductName,
 		ProductDescription = createProductVM.ProductDescription,
 		ProductDimension = createProductVM.ProductDimension,
