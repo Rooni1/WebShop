@@ -142,8 +142,8 @@ namespace WebShop.Models.Repo
 	    // och operationen för att addera en rad i databasen tar näst intill konstant tid om
 	    // det finns ett index som man kan kontrollera för att se om något redan finns.)
 	    //
-	    // orders = _dBWebShop.Order.ToList();
 	    //
+	    orders = _dBWebShop.Order.ToList();
 	    foreach (Order item in orders)
 	    {
 		if (item.OrderId == Id)
