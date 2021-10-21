@@ -83,7 +83,7 @@ namespace WebShop.Controllers
 		///
 		/// </summary>
 		/// <param name="id"></param>
-		/// <param name="oredrToUpdate"></param>
+		/// <param name="orderToUpdate"></param>
 		/// <returns></returns>
 		[HttpPut("{id}")]
 		[Route("Update")]
