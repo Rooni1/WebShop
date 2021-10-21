@@ -1,5 +1,17 @@
+import React, { useState, useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
 
-export default function OrderTotal() {
+import { useStore } from '../../app/stores/store';
+
+export default observer(function OrderTotal() {
+  const {orderStore} = useStore();
+  const {total} = orderStore;
+
+  const [totalSum, setTotalSum] = useState(0);
+  
+  useEffect(() => {
+    setTotalSum(total);
+  }, [total]);
   
   return (
     <>
@@ -8,22 +20,21 @@ export default function OrderTotal() {
           Order Summary
       </div>
       <div className="p-4">
-          <p className="mb-4" style={{fontStyle: "italic"}}>Shipping costs will be added depending on choices made during checkout</p>
           <ul className="mb-4 list-unstyled">
               <li className="py-3 d-flex justify-content-between border-bottom">
                   <strong className="text-muted">Order subtotal</strong>
-                  <strong>1000.00</strong>
+                  <strong>{totalSum}</strong>
               </li>
               <li className="py-3 d-flex justify-content-between border-bottom">
-                  <strong class="text-muted">Shipping and handling</strong>
-                  <strong>200.00</strong>
+                  <strong className="text-muted">Shipping and handling</strong>
+                  <strong>{totalSum ? 200 : 0}</strong>
               </li>
               <li className="py-3 d-flex justify-content-between border-bottom">
-                  <strong class="text-muted">Total</strong>
-                  <strong>1200.00</strong>
+                  <strong className="text-muted">Total</strong>
+                  <strong>{totalSum ? totalSum + 200 : 0}</strong>
               </li>
           </ul>
       </div>
     </>
   );
-  }
+  })

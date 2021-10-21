@@ -1,19 +1,8 @@
-import axios, { AxiosError, AxiosResponse } from 'axios';
-//import { history } from '../..';
-//import { ProductVm } from '../models/peopleVm';
-//import { Person } from '../models/person';
-//import { store } from '../stores/store';
-
-const sleep = (delay) => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay)
-  })
-}
+import axios from 'axios';
 
 axios.defaults.baseURL = 'https://localhost:44313/api';
 
 axios.interceptors.response.use(async response => {
-  //await sleep(1000);
   return response;
 }, (error) => {
   console.log(error);
@@ -51,24 +40,9 @@ axios.interceptors.response.use(async response => {
   return Promise.reject(error);
 })
 
-//const responseBody =  (response) => response.data;
-
-/**const promise = axios.get(url)
-
-    // using .then, create a new promise which extracts the data
-    const dataPromise = promise.then((response) => response.data)
-
-    // return it
-    return dataPromise
-**/
-
 function get (url) { 
     return axios.get(url).then((response) => response.data);
 }
-  //</T>/post: <T> (url: string, body: {}) => axios.post<T>(url, body).then(responseBody),
-  //</T></T>put: <T> (url: string, body: {}) => axios.put<T>(url, body).then(responseBody),
-  //</T>del: <T> (url: string) => axios.delete<T>(url).then(responseBody),
-//}
 
 function productList() {
   return get('/Product/GetAll');
@@ -77,20 +51,9 @@ function productList() {
 function details(id) {
   return get(`/People/Get/${id}`);
 }
-  /**</PeopleVm>search: (name: string) => requests.get<PeopleVm>(`/People/Search/${name}`),
-  details: (id: string) => requests.get<Person>(`/People/Get/${id}`),
-  create: (person: Person) => axios.post<void>('/People/Create', person),
-  update: (person: Person) => axios.put<void>(`/People/Update/${person.id}`, person),
-  delete: (id: string) => axios.delete<void>(`/People/Delete/${id}`)</void>**/
-//}
-
-
-
+  
 const agent = {
-  productList/**,
-  Countries,
-  Cities,
-  Languages**/
+  productList
 }
 
 export default agent;
