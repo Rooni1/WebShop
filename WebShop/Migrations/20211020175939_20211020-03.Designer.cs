@@ -10,8 +10,8 @@ using WebShop.Data;
 namespace WebShop.Migrations
 {
     [DbContext(typeof(DBWebShop))]
-    [Migration("20211019080937_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20211020175939_20211020-03")]
+    partial class _2021102003
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -79,6 +79,62 @@ namespace WebShop.Migrations
                     b.HasKey("ProductId");
 
                     b.ToTable("Product");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 1,
+                            ProductDescription = "Maskinskruv M8",
+                            ProductDimension = 8f,
+                            ProductLength = 20f,
+                            ProductName = "spårskruv M8",
+                            ProductPrice = 1f
+                        },
+                        new
+                        {
+                            ProductId = 2,
+                            ProductDescription = "Maskinskruv M8",
+                            ProductDimension = 8f,
+                            ProductLength = 45f,
+                            ProductName = "spårskruv M8",
+                            ProductPrice = 1f
+                        },
+                        new
+                        {
+                            ProductId = 3,
+                            ProductDescription = "Maskinskruv M8",
+                            ProductDimension = 8f,
+                            ProductLength = 60f,
+                            ProductName = "spårskruv M8",
+                            ProductPrice = 1f
+                        },
+                        new
+                        {
+                            ProductId = 4,
+                            ProductDescription = "Maskinskruv M8",
+                            ProductDimension = 8f,
+                            ProductLength = 75f,
+                            ProductName = "spårskruv M8",
+                            ProductPrice = 1f
+                        },
+                        new
+                        {
+                            ProductId = 5,
+                            ProductDescription = "Maskinskruv M8",
+                            ProductDimension = 8f,
+                            ProductLength = 90f,
+                            ProductName = "spårskruv M8",
+                            ProductPrice = 1f
+                        },
+                        new
+                        {
+                            ProductId = 6,
+                            ProductDescription = "Maskinskruv M8",
+                            ProductDimension = 8f,
+                            ProductLength = 120f,
+                            ProductName = "spårskruv M8",
+                            ProductPrice = 1f
+                        });
                 });
 
             modelBuilder.Entity("WebShop.Models.Entities.OrderItem", b =>
