@@ -39,6 +39,7 @@ namespace WebShop.Controllers
 		/// </summary>
 		/// <returns></returns>
 		[HttpGet]
+		[Route("GetAll")]
 		public IActionResult GetAll()
 		{
 			return Ok(_orderService.All());
