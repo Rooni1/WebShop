@@ -38,12 +38,10 @@ namespace WebShop.Controllers
         }
 
         [HttpGet]
-        [Route("FindById")]
-        public IActionResult FindById(int id)
+        public ActionResult<Order> FindById(int id)
         {
 
-            _orderService.FindBy(id);
-            return View();
+            return Ok(_orderService.FindBy(id));
         }
 
         [HttpDelete("{id}")]

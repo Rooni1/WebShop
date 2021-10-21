@@ -81,16 +81,7 @@ namespace WebShop.Models.Repo
 
         public Order FindById(int Id)
         {
-            orders = _dBWebShop.Order.ToList();
-
-            foreach (Order item in orders)
-            {
-                if (item.OrderId == Id)
-                {
-                    return item;
-                }
-            }
-            return null;
+            return _dBWebShop.Order.Include(o => o.OrderItems).FirstOrDefault(x => x.OrderId == Id);
         }
 
         public void Delete(int Id)
