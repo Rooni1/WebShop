@@ -42,7 +42,8 @@ namespace WebShop.Controllers
 		[Route("GetAll")]
 		public IActionResult GetAll()
 		{
-			return Ok(_orderService.All());
+		    _orderService.All();
+		    return View();
 		}
 
 		//[HttpGet]
@@ -93,4 +94,3 @@ namespace WebShop.Controllers
 		}
 	}
 }
-
