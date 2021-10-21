@@ -7,8 +7,7 @@ using WebShop.Models.Repo;
 using WebShop.ViewModels;
 
 namespace WebShop.Models.Service
-{
-   
+{ 
     public class ProductService : IProductService
     {
         private readonly IProductRepo _productRepo;
@@ -17,11 +16,20 @@ namespace WebShop.Models.Service
             _productRepo = productRepo;
 
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="product"></param>
         public void Add(CreateProductViewModel product)
         {
             _productRepo.Create(product);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<ProductViewModel> All()
         {
             //List<ProductViewModel> products = new List<ProductViewModel>();
@@ -44,6 +52,11 @@ namespace WebShop.Models.Service
             return products;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="product"></param>
         public void Edit(int id, UpdateProductViewModel product)
         {
             Product productToUpdate = _productRepo.Read(id);
@@ -55,6 +68,11 @@ namespace WebShop.Models.Service
             _productRepo.Update(productToUpdate);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ProductViewModel FindBy(int id)
         {
 
@@ -74,6 +92,10 @@ namespace WebShop.Models.Service
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
         public void Remove(int id)
         {
 

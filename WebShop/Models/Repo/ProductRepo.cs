@@ -58,9 +58,9 @@ namespace WebShop.Models.Repo
 	/// </returns>
 	public List<Product> Read()
 	{
-	    return products = _dBWebShop.Product.ToList();
+	    //return products = _dBWebShop.Product.ToList();
 
-	    // return _dBWebShop.Product.ToList();
+	     return _dBWebShop.Product.ToList();
 	}
 
 	/// <summary>
