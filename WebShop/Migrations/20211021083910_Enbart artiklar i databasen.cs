@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebShop.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Enbartartiklaridatabasen : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -60,6 +60,19 @@ namespace WebShop.Migrations
                         principalTable: "Product",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Product",
+                columns: new[] { "ProductId", "ProductDescription", "ProductDimension", "ProductLength", "ProductName", "ProductPrice" },
+                values: new object[,]
+                {
+                    { 1, "Maskinskruv M8", 8f, 20f, "spårskruv M8", 1f },
+                    { 2, "Maskinskruv M8", 8f, 45f, "spårskruv M8", 1f },
+                    { 3, "Maskinskruv M8", 8f, 60f, "spårskruv M8", 1f },
+                    { 4, "Maskinskruv M8", 8f, 75f, "spårskruv M8", 1f },
+                    { 5, "Maskinskruv M8", 8f, 90f, "spårskruv M8", 1f },
+                    { 6, "Maskinskruv M8", 8f, 120f, "spårskruv M8", 1f }
                 });
 
             migrationBuilder.CreateIndex(
