@@ -10,7 +10,6 @@ import Basket from '../../features/order/Basket';
 
 
 function App() {
-  const location = useLocation();
   return (
     <>
       <Route

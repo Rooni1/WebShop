@@ -1,11 +1,10 @@
-import React, { ChangeEvent, useEffect, useState }  from 'react';
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import React, { useEffect }  from 'react';
 
 import { useStore } from '../../../app/stores/store';
 import { history } from '../../..';
 import ProductList from './ProductList';
 
-export default function Dashboard() {
+export default function ProductsDashboard() {
   const {productStore} = useStore();
   const {loadProducts, productRegistry} = productStore;
 
@@ -13,13 +12,8 @@ export default function Dashboard() {
     if ((productRegistry.size <= 1)) loadProducts();
   }, [productRegistry.size, loadProducts]);
 
-  function handleClick(id) {
-    history.push('/shop/' + id);
-  };
-
   return (
     <>
-      
       <div className="container">
         <div className="row">
           

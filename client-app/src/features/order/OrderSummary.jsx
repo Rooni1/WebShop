@@ -1,7 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
+import React, { useState, useEffect } from 'react';
 
-export default function OrderSummary() {
+import { useStore } from '../../app/stores/store';
+import OrderSummaryItem from './OrderSummaryItem';
+
+export default observer(function OrderSummary() {
+  const {orderStore} = useStore();
+  const {basketItems} = orderStore;
+
+  const [items, setItems] = useState(basketItems);
+
+  useEffect(() => {
+    setItems(basketItems);
+  }, [basketItems.size, basketItems]);
+
   return (
     <>
       <div className="table-responsive">
@@ -26,89 +38,11 @@ export default function OrderSummary() {
               </tr>
           </thead>
           <tbody>
-              <tr>
-                  <th scope="row">
-                      <div className="p-2">
-                          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Screw_for_wood.JPG/256px-Screw_for_wood.JPG" alt=""
-                              className="img-fluid" style={{maxHeight: "50px"}} />
-                          <div className="ml-3 align-middle d-inline-block">
-                              <h5 className="mb-0">
-                              <Link to={`/shop/${1}`}>
-                                  To shop
-                              </Link>
-                              </h5>
-                              <span
-                                  className="text-muted font-weight-normal d-block" style={{fontStyle: "italic"}}>Type:
-                                  Type</span>
-                          </div>
-  
-                      </div>
-                  </th>
-                  <td className="align-middle"><strong>100.00</strong></td>
-                  <td className="align-middle">
-                      <div className="d-flex align-items-center justify-content-start">
-                          <i className="me-2 fa fa-minus-circle text-warning"
-                              style={{cursor: "pointer", fontSize: "2em"}}></i>
-                          <span className="font-weight-bold" style={{fontSize: "1.5em"}}>
-                              2
-                          </span>
-                          <i className="mx-2 fa fa-plus-circle text-warning"
-                              style={{cursor: "pointer", fontSize: "2em"}}></i>
-                      </div>
-                  </td>
-                  <td className="align-middle">
-                      <strong>200.00</strong></td>
-                  <td className="text-center align-middle">
-                    <div className="d-flex justify-content-start ms-4">
-                      <a className="text-danger">
-                          <i class="fa fa-trash" style={{fontSize: "2em", cursor: "pointer"}}></i>
-                      </a>
-                    </div>
-                  </td>
-              </tr>
-              <tr style={{borderTop: "thin solid"}}>
-                  <th scope="row">
-                      <div className="p-2">
-                          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Screw_for_wood.JPG/256px-Screw_for_wood.JPG" alt=""
-                              className="img-fluid" style={{maxHeight: "50px"}} />
-                          <div className="ml-3 align-middle d-inline-block">
-                              <h5 className="mb-0">
-                              <Link to={`/shop/${1}`}>
-                                  To shop
-                              </Link>
-                              </h5>
-                              <span
-                                  className="text-muted font-weight-normal d-block" style={{fontStyle: "italic"}}>Type:
-                                  Type</span>
-                          </div>
-  
-                      </div>
-                  </th>
-                  <td className="align-middle"><strong>100.00</strong></td>
-                  <td className="align-middle">
-                      <div className="d-flex align-items-center justify-content-start">
-                          <i className="me-2 fa fa-minus-circle text-warning"
-                              style={{cursor: "pointer", fontSize: "2em"}}></i>
-                          <span className="font-weight-bold" style={{fontSize: "1.5em"}}>
-                              2
-                          </span>
-                          <i className="mx-2 fa fa-plus-circle text-warning"
-                              style={{cursor: "pointer", fontSize: "2em"}}></i>
-                      </div>
-                  </td>
-                  <td className="align-middle">
-                      <strong>200.00</strong></td>
-                  <td className="text-center align-middle">
-                    <div className="d-flex justify-content-start ms-4">
-                      <a className="text-danger">
-                          <i class="fa fa-trash" style={{fontSize: "2em", cursor: "pointer"}}></i>
-                      </a>
-                    </div>
-                  </td>
-              </tr>
+            {items && items.map(item => <OrderSummaryItem basketItem={item} />)}
           </tbody>
         </table>
+        
       </div>
     </>
   );
-};
+});

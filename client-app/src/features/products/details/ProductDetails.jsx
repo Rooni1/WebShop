@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
-import { Row, Col, Form, Button } from 'react-bootstrap';
 import { useParams } from 'react-router';
+
 import { useStore } from '../../../app/stores/store';
 
 export default observer(function ProductDetails() {
