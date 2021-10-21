@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebShop.Migrations
 {
-    public partial class _2021102003 : Migration
+    public partial class Enbartartiklaridatabasen : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -16,7 +16,8 @@ namespace WebShop.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<OrderItem>()
-                .HasKey(o => new {
+                .HasKey(o => new
+                {
                     o.OrderId,
                     o.ProductId
                 });
@@ -34,7 +35,8 @@ namespace WebShop.Data
                 .HasForeignKey(oi => oi.ProductId);
 
             modelBuilder
-                .Entity<Product>().HasData(new Product
+                .Entity<Product>().HasData(
+                new Product
                 {
                     ProductId = 1,
                     ProductDescription = "Maskinskruv M8",
@@ -88,8 +90,51 @@ namespace WebShop.Data
                     ProductName = "spårskruv M8",
                     ProductPrice = 1.0F
                 });
+            modelBuilder
+                .Entity<Order>().HasData(
+                new Order
+                {
+                    OrderId=1,
+                    OrderDate=DateTime.Now
+                },
+                new Order
+                {
+                    OrderId=2,
+                    OrderDate=DateTime.Now
                 }
-
+                );
+            modelBuilder
+                .Entity<OrderItem>().HasData(
+                new OrderItem
+                {
+                    OrderId=1,
+                    ProductId=1,
+                    Quantity=20
+                },
+                new OrderItem
+                {
+                    OrderId=1,
+                    ProductId=2,
+                    Quantity=20
+                }
+                );
+            modelBuilder
+                .Entity<OrderItem>().HasData(
+                new OrderItem
+                {
+                    OrderId = 2,
+                    ProductId = 5,
+                    Quantity = 30
+                },
+                new OrderItem
+                {
+                    OrderId = 2,
+                    ProductId = 6,
+                    Quantity = 35
+                }
+                );                
+        }        
+                
         public DbSet<Product> Product { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<OrderItem> OrderItem { get; set; }

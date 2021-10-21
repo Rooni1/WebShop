@@ -10,8 +10,8 @@ using WebShop.Data;
 namespace WebShop.Migrations
 {
     [DbContext(typeof(DBWebShop))]
-    [Migration("20211020175939_20211020-03")]
-    partial class _2021102003
+    [Migration("20211021084459_fler ordrar inlagda")]
+    partial class flerordrarinlagda
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,18 @@ namespace WebShop.Migrations
                     b.HasKey("OrderId");
 
                     b.ToTable("Order");
+
+                    b.HasData(
+                        new
+                        {
+                            OrderId = 1,
+                            OrderDate = new DateTime(2021, 10, 21, 10, 44, 59, 403, DateTimeKind.Local).AddTicks(2789)
+                        },
+                        new
+                        {
+                            OrderId = 2,
+                            OrderDate = new DateTime(2021, 10, 21, 10, 44, 59, 408, DateTimeKind.Local).AddTicks(1237)
+                        });
                 });
 
             modelBuilder.Entity("WebShop.Models.Entities.OrderItem", b =>
