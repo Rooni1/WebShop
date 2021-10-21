@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { useStore } from '../../app/stores/store';
 
+import { Row, Col, Navbar, Nav } from 'react-bootstrap';
 import { history } from '../..';
 
 
@@ -15,8 +16,8 @@ export default observer(function NavBar() {
   const [basketSize, setBasketSize] = useState(0);
   
   useEffect(() => {
-    setBasketSize(basketItems.length);
-  }, [basketItems.length]);
+    setBasketSize(basketItems.size);
+  }, [basketItems.size]);
   
   function handleClick() {
     history.push('/basket/');
