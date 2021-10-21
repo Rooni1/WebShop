@@ -37,7 +37,6 @@ namespace WebShop.Controllers
         }
 
         [HttpPost]
-        [Route("Create")]
         public ActionResult Create([FromBody] CreateProductViewModel product)
         {
             _productService.Add(product);

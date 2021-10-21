@@ -9,7 +9,7 @@ using WebShop.ViewModels;
 
 namespace WebShop.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class OrderController : Controller
     {
@@ -21,12 +21,12 @@ namespace WebShop.Controllers
         }
 
         [HttpPost]
-        [Route("Create")]
-        public IActionResult Create([FromBody] CreateOrderViewModel createOrder)
+        public IActionResult Create(CreateOrderViewModel createOrder)
         {
            
             _orderService.Add(createOrder);
-            return View();
+
+            return NoContent();
         }
 
         [HttpGet]

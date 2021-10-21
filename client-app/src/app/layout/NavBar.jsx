@@ -16,8 +16,8 @@ export default observer(function NavBar() {
   const [basketSize, setBasketSize] = useState(0);
   
   useEffect(() => {
-    setBasketSize(basketItems.size);
-  }, [basketItems.size]);
+    setBasketSize(basketItems.length);
+  }, [basketItems.length]);
   
   function handleClick() {
     history.push('/basket/');

@@ -8,9 +8,7 @@ namespace WebShop.ViewModels
 {
     public class CreateOrderViewModel
     {
-        public int OrderId { get; set; }
-        public DateTime OrderDate { get; set; }
-        public List<OrderItem> OrderItems = new List<OrderItem>();
+        public List<OrderItem> OrderItems { get; set; }
 
     }
 }

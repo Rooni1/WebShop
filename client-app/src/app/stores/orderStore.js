@@ -1,5 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
+import agent from "../api/agent";
+
 export default class OrderStore {
   basketRegistry = new Map();
   total = 0;
@@ -65,5 +67,18 @@ export default class OrderStore {
 
   getBasketItem = (id) => {
     return this.basketRegistry.get(id);
+  }
+
+  placeOrder = () => {
+    let order = {OrderItems : []}
+    this.basketItems.map(item => order.OrderItems.push(
+      {
+        "ProductId": parseInt(item.id),
+        "Quantity": item.quantity
+      }));
+    
+    console.log('debug');
+    agent.placeOrder(order);
+    this.basketRegistry = new Map();
   }
 };

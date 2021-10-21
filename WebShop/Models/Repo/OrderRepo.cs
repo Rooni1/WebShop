@@ -18,30 +18,34 @@ namespace WebShop.Models.Repo
         {
             _dBWebShop = dBWebShop;
         }
+
+        public void SetOrderItems(Order order, List<OrderItem> orderItems)
+        {
+            if (orderItems != null)
+            {
+                foreach (OrderItem orderItem in orderItems)
+                {
+                    var newProduct = _dBWebShop.Product.FirstOrDefault(
+                        p => p.ProductId == orderItem.ProductId);
+                    order.OrderItems.Add(new OrderItem
+                    {
+                        Order = order,
+                        Product = newProduct,
+                        Quantity = orderItem.Quantity
+                    });
+                }
+            }
+        }
+
         public void Create(CreateOrderViewModel createOrder)
         {
-            Order newOrder = new Order
-            {
-                //OrderId = createOrder.OrderId,
-                OrderDate = createOrder.OrderDate
-            };
-            _dBWebShop.Add(newOrder);
+            Order order = new Order();
+            order.OrderDate = DateTime.Now;
+            order.OrderItems = new List<OrderItem>();
+            SetOrderItems(order, createOrder.OrderItems);
+
+            _dBWebShop.Add(order);
             _dBWebShop.SaveChanges();
-            for (int i = 0; i < createOrder.OrderItems.Count;  i++)
-            {
-                OrderItem itemsOrdered = new OrderItem
-                {
-                    OrderId = newOrder.OrderId,
-                    Quantity = createOrder.OrderItems[i].Quantity,
-                    ProductId = createOrder.OrderItems[i].ProductId
-                  
-                };
-               
-                _dBWebShop.Add(itemsOrdered);
-                _dBWebShop.SaveChanges();
-            }
-
-
         }
 
         public List<OrderItem> Read()

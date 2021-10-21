@@ -41,7 +41,11 @@ axios.interceptors.response.use(async response => {
 })
 
 function get (url) { 
-    return axios.get(url).then((response) => response.data);
+  return axios.get(url).then((response) => response.data);
+}
+
+function post(url, order) {
+  axios.post(url, order);
 }
 
 function productList() {
@@ -51,9 +55,14 @@ function productList() {
 function details(id) {
   return get(`/People/Get/${id}`);
 }
+
+function placeOrder(order) {
+  post(`/Order/Create`, order);
+}
   
 const agent = {
-  productList
+  productList, 
+  placeOrder
 }
 
 export default agent;
