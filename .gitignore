@@ -369,3 +369,11 @@ dok/*.aux
 dok/*.log
 dok/*/*.aux
 dok/*/*.log
+
+#
+# library manager kontrollerade i wwwroot/lib
+#
+WebShop/wwwroot/lib/bootstrap-test
+WebShop/wwwroot/lib/jquery-test
+WebShop/wwwroot/lib/jquery-validation-test
+WebShop/wwwroot/lib/jquery-validation-unobtrusive-test
