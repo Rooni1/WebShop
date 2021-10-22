@@ -366,7 +366,8 @@ FodyWeavers.xsd
 # react
 #
 # ska  client-app/package-lock.json vara med repo eller inte ?
-#client-app/package-lock.json
+client-app/package-lock.json
+client-app/yarn.lock
 
 #
 # LaTeX hjälp filer
