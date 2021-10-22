@@ -19,6 +19,11 @@ namespace WebShop.Controllers
 	    _orderService = orderService;
 	}
 
+	/// <summary>
+	///
+	/// </summary>
+	/// <param name="createOrder"></param>
+	/// <returns></returns>
 	[HttpPost]
 	public IActionResult Create(CreateOrderViewModel createOrder)
 	{
@@ -27,6 +32,10 @@ namespace WebShop.Controllers
 	    return NoContent();
 	}
 
+	/// <summary>
+	/// returnera data om alla existerande ordrar i systemet
+	/// </summary>
+	/// <returns></returns>
 	[HttpGet]
 	[Route("GetAll")]
 	public IActionResult GetAll()
@@ -36,12 +45,22 @@ namespace WebShop.Controllers
 	    return View();
 	}
 
+	/// <summary>
+	///
+	/// </summary>
+	/// <param name="id"></param>
+	/// <returns></returns>
 	[HttpGet]
 	public ActionResult<Order> FindById(int id)
 	{
 	    return Ok(_orderService.FindBy(id));
 	}
 
+	/// <summary>
+	///
+	/// </summary>
+	/// <param name="id"></param>
+	/// <returns></returns>
 	[HttpDelete("{id}")]
 	[Route("Delete")]
 	public ActionResult Delete(int id)
@@ -51,6 +70,12 @@ namespace WebShop.Controllers
 	    return NoContent();
 	}
 
+	/// <summary>
+	///
+	/// </summary>
+	/// <param name="id"></param>
+	/// <param name="orderToUpdate"></param>
+	/// <returns></returns>
 	[HttpPut("{id}")]
 	[Route("Update")]
 	public IActionResult Update(int id, UpdateOrderViewModel oredrToUpdate)
