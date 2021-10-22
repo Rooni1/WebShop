@@ -361,3 +361,26 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+#
+# react
+#
+# ska  client-app/package-lock.json vara med repo eller inte ?
+client-app/package-lock.json
+client-app/yarn.lock
+
+#
+# LaTeX hjälp filer
+#
+dok/*.aux
+dok/*.log
+dok/*/*.aux
+dok/*/*.log
+
+#
+# library manager kontrollerade i wwwroot/lib
+#
+WebShop/wwwroot/lib/bootstrap-test
+WebShop/wwwroot/lib/jquery-test
+WebShop/wwwroot/lib/jquery-validation-test
+WebShop/wwwroot/lib/jquery-validation-unobtrusive-test

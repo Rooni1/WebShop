@@ -10,53 +10,53 @@ namespace WebShop.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly IProductService _productService;
+	private readonly IProductService _productService;
 
-        public ProductController(IProductService productService)
-        {
-            _productService = productService;
-        }
+	public ProductController(IProductService productService)
+	{
+	    _productService = productService;
+	}
 
+	[HttpGet]
+	public ActionResult<List<ProductViewModel>> GetAll()
+	{
+	    List<ProductViewModel> products = _productService.All();
 
-        [HttpGet]
-        public ActionResult<List<ProductViewModel>> GetAll()
+	    return Ok(products);
+	}
 
-        {
-            List<ProductViewModel> products = _productService.All();
+	[HttpGet("{id}")]
+	public ActionResult<ProductViewModel> Get(int id)
+	{
+	    ProductViewModel product = _productService.FindBy(id);
 
-            return Ok(products);
+	    return Ok(product);
+	}
 
-        }
+	[HttpPost]
+	public ActionResult Create([FromBody] CreateProductViewModel product)
+	{
+	    _productService.Add(product);
 
-        [HttpGet("{id}")]
-        public ActionResult<ProductViewModel> Get(int id)
-        {
-            ProductViewModel product =  _productService.FindBy(id);
+	    return NoContent();
+	}
 
-            return Ok(product);
-        }
+	[HttpPut("{id}")]
+	[Route("Update")]
+	public IActionResult Update(int id, UpdateProductViewModel product)
+	{
+	    _productService.Edit(id,product);
 
-        [HttpPost]
-        public ActionResult Create([FromBody] CreateProductViewModel product)
-        {
-            _productService.Add(product);
-            return NoContent();
-        }
+	    return NoContent();
+	}
 
-        [HttpPut("{id}")]
-        [Route("Update")]
-        public IActionResult Update(int id, UpdateProductViewModel product)
-        {
-            _productService.Edit(id,product);
-            return NoContent();
-        }
+	[HttpDelete("{id}")]
+	[Route("Delete")]
+	public ActionResult Delete(int id)
+	{
+	    _productService.Remove(id);
 
-        [HttpDelete("{id}")]
-        [Route("Delete")]
-        public ActionResult Delete(int id)
-        {
-            _productService.Remove(id);
-            return NoContent();
-        }
+	    return NoContent();
+	}
     }
 }

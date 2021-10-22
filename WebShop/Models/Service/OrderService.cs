@@ -10,38 +10,63 @@ namespace WebShop.Models.Service
 {
     public class OrderService : IOrderService
     {
-        private readonly IOrderRepo _orderRepo;
-        public OrderService(IOrderRepo orderRepo)
-        {
-            _orderRepo = orderRepo;
-                
-        }
-        public void Add(CreateOrderViewModel createOrder)
-        {
-            _orderRepo.Create(createOrder);
-        }
+	private readonly IOrderRepo _orderRepo;
 
-        public List<OrderItem> All()
-        {
-            return _orderRepo.Read();
+	/// <summary>
+	///
+	/// </summary>
+	/// <param name="orderRepo"></param>
+	public OrderService(IOrderRepo orderRepo)
+	{
+	    _orderRepo = orderRepo;
+	}
 
-        }
+	/// <summary>
+	/// inläggning av order i systemet
+	/// </summary>
+	/// <param name="createOrder"></param>
+	public void Add(CreateOrderViewModel createOrder)
+	{
+	    _orderRepo.Create(createOrder);
+	}
 
-        public void Edit(int id, UpdateOrderViewModel updateOrder)
-        {
-           
-            _orderRepo.Edit(id, updateOrder);
-        }
+	/// <summary>
+	///
+	/// </summary>
+	/// <returns></returns>
+	public List<OrderItem> All()
+	{
+	    return _orderRepo.Read();
+	}
 
-        public Order FindBy(int id)
-        {
-            return _orderRepo.FindById(id);
-            
-        }
+	/// <summary>
+	///
+	/// </summary>
+	/// <param name="id"></param>
+	/// <param name="updateOrder"></param>
+	public void Edit(int id, UpdateOrderViewModel updateOrder)
+	{
+	    _orderRepo.Edit(id, updateOrder);
+	}
 
-        public void Remove(int id)
-        {
-            _orderRepo.Delete(id);
-        }
+	/// <summary>
+	///
+	/// </summary>
+	/// <param name="id"></param>
+	/// <returns></returns>
+	public Order FindBy(int id)
+	{
+	    return _orderRepo.FindById(id);
+
+	}
+
+	/// <summary>
+	///
+	/// </summary>
+	/// <param name="id"></param>
+	public void Remove(int id)
+	{
+	    _orderRepo.Delete(id);
+	}
     }
 }

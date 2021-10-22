@@ -8,80 +8,96 @@ using WebShop.ViewModels;
 
 namespace WebShop.Models.Service
 {
-   
     public class ProductService : IProductService
     {
-        private readonly IProductRepo _productRepo;
-        public ProductService(IProductRepo productRepo)
-        {
-            _productRepo = productRepo;
+	private readonly IProductRepo _productRepo;
+	public ProductService(IProductRepo productRepo)
+	{
+	    _productRepo = productRepo;
 
-        }
-        public void Add(CreateProductViewModel product)
-        {
-            _productRepo.Create(product);
-        }
+	}
 
-        public List<ProductViewModel> All()
-        {
-            //List<ProductViewModel> products = new List<ProductViewModel>();
-            //ProductViewModel product = new ProductViewModel { id = "1", name = "Gunnebo" };
-            List<Product> entities = _productRepo.Read();
-            List<ProductViewModel> products = new List<ProductViewModel>();
-            foreach(Product entity in entities)
-            {
-                ProductViewModel product = new ProductViewModel { 
-                    id = entity.ProductId.ToString(), 
-                    name = entity.ProductName,
-                    ProductDescription = entity.ProductDescription,
-                    ProductLength = entity.ProductLength,
-                    ProductDimension = entity.ProductDimension,
-                    ProductPrice = entity.ProductPrice
-                };
-                products.Add(product);
-            }
+	/// <summary>
+	///
+	/// </summary>
+	/// <param name="product"></param>
+	public void Add(CreateProductViewModel product)
+	{
+	    _productRepo.Create(product);
+	}
 
-            return products;
-        }
+	/// <summary>
+	///
+	/// </summary>
+	/// <returns></returns>
+	public List<ProductViewModel> All()
+	{
+	    // List<ProductViewModel> products = new List<ProductViewModel>();
+	    // ProductViewModel product = new ProductViewModel { id = "1", name = "Gunnebo" };
+	    List<Product> entities = _productRepo.Read();
+	    List<ProductViewModel> products = new List<ProductViewModel>();
+	    foreach(Product entity in entities)
+	    {
+		ProductViewModel product = new ProductViewModel {
+		    id = entity.ProductId.ToString(),
+		    name = entity.ProductName,
+		    ProductDescription = entity.ProductDescription,
+		    ProductLength = entity.ProductLength,
+		    ProductDimension = entity.ProductDimension,
+		    ProductPrice = entity.ProductPrice
+		};
+		products.Add(product);
+	    }
 
-        public void Edit(int id, UpdateProductViewModel product)
-        {
-            Product productToUpdate = _productRepo.Read(id);
-            productToUpdate.ProductName = product.ProductName;
-            productToUpdate.ProductDescription = product.ProductDescription;
-            productToUpdate.ProductLength = product.ProductLength;
-            productToUpdate.ProductDimension = product.ProductDimension;
-            productToUpdate.ProductPrice = product.ProductPrice;
-            _productRepo.Update(productToUpdate);
-        }
+	    return products;
+	}
 
-        public ProductViewModel FindBy(int id)
-        {
+	/// <summary>
+	/// modifiering av data om en viss produkt
+	/// </summary>
+	/// <param name="id"></param>
+	/// <param name="product"></param>
+	public void Edit(int id, UpdateProductViewModel product)
+	{
+	    Product productToUpdate = _productRepo.Read(id);
+	    productToUpdate.ProductName = product.ProductName;
+	    productToUpdate.ProductDescription = product.ProductDescription;
+	    productToUpdate.ProductLength = product.ProductLength;
+	    productToUpdate.ProductDimension = product.ProductDimension;
+	    productToUpdate.ProductPrice = product.ProductPrice;
+	    _productRepo.Update(productToUpdate);
+	}
 
-            Product product = _productRepo.Read(id);
+	/// <summary>
+	///
+	/// </summary>
+	/// <param name="id"></param>
+	/// <returns></returns>
+	public ProductViewModel FindBy(int id)
+	{
+	    Product product = _productRepo.Read(id);
 
-            ProductViewModel model = new ProductViewModel
-            {
-                id = product.ProductId.ToString(),
-                name = product.ProductName,
-                ProductDescription = product.ProductDescription,
-                ProductLength = product.ProductLength,
-                ProductDimension = product.ProductDimension,
-                ProductPrice = product.ProductPrice
-            };
+	    ProductViewModel model = new ProductViewModel
+	    {
+		id = product.ProductId.ToString(),
+		name = product.ProductName,
+		ProductDescription = product.ProductDescription,
+		ProductLength = product.ProductLength,
+		ProductDimension = product.ProductDimension,
+		ProductPrice = product.ProductPrice
+	    };
 
-            return model;
+	    return model;
+	}
 
-        }
-
-        public void Remove(int id)
-        {
-
-            Product productToRemove = _productRepo.Read(id);
-            _productRepo.Delete(productToRemove);
-
-            
-
-        }
+	/// <summary>
+	///
+	/// </summary>
+	/// <param name="id"></param>
+	public void Remove(int id)
+	{
+	    Product productToRemove = _productRepo.Read(id);
+	    _productRepo.Delete(productToRemove);
+	}
     }
 }

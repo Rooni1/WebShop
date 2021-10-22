@@ -9,30 +9,44 @@ namespace WebShop.Models.Repo
 {
     public interface IOrderRepo
     {
-        //
-        // hur man får en varukorg att bli en order i systemet (databasen)
-        //
-        void Create(CreateOrderViewModel createOrder);
+	/// <summary>
+	/// hur man får en varukorg att bli en order i systemet (databasen)
+	/// </summary>
+	/// <param name="createOrder"></param>
+	void Create(CreateOrderViewModel createOrder);
 
-        //
-        // sökning efter en viss order
-        //
-        public Order FindById(int Id);
+	/// <summary>
+	/// sökning efter en viss order
+	/// </summary>
+	/// <param name="Id"></param>
+	/// <returns></returns>
+	public Order FindById(int Id);
 
-        //
-        // vilka order har en viss kund sedan tidigare
-        //
-        public List<Order> FindByCustomer(int CustomerId);
-        public List<OrderItem> Read();
+	/// <summary>
+	/// vilka order har en viss kund sedan tidigare
+	/// </summary>
+	/// <param name="CustomerId"></param>
+	/// <returns></returns>
+	public List<Order> FindByCustomer(int CustomerId);
 
-        //
-        // modifiering av en viss order
-        //
-        //  ersätter Edit i IOrderItem ?
-        //
-        public void Edit(int id, UpdateOrderViewModel updateOrder);
+	/// <summary>
+	///
+	/// </summary>
+	/// <returns></returns>
+	public List<OrderItem> Read();
 
-        public void Delete(int Id);
+	/// <summary>
+	/// modifiering av en viss order
+	/// ersätter Edit i IOrderItem ?
+	/// </summary>
+	/// <param name="id"></param>
+	/// <param name="updateOrder"></param>
+	public void Edit(int id, UpdateOrderViewModel updateOrder);
 
+	/// <summary>
+	/// borttagning av en order
+	/// </summary>
+	/// <param name="Id"></param>
+	public void Delete(int Id);
     }
 }
