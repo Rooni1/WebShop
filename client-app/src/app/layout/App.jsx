@@ -13,19 +13,19 @@ function App() {
   return (
     <>
       <Route
-        path={'/(.+)'}
-        render={() => (
-          <>
-            <NavBar />
-            <Switch>
-              <Route exact path='/shop' component={ProductDashboard} />
-              <Route path='/shop/:id' component={ProductDetails} />
-              <Route path='/basket' component={Basket} />
-              <Route exact path='/orderconfirm' component={OrderConfirm} />
-            </Switch>
-          </>
-        
-        )}
+	path={'/(.+)'}
+	render={() => (
+	  <>
+	    <NavBar />
+	    <Switch>
+	      <Route exact path='/shop' component={ProductDashboard} />
+	      <Route path='/shop/:id' component={ProductDetails} />
+	      <Route path='/basket' component={Basket} />
+	      <Route exact path='/orderconfirm' component={OrderConfirm} />
+	    </Switch>
+	  </>
+
+	)}
       />
     </>
   );
