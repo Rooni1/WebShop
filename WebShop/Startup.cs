@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +14,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebShop.Data;
+using WebShop.Data.Identity;
+using WebShop.Models.Entities.Identity;
 using WebShop.Models.Repo;
 using WebShop.Models.Service;
 
@@ -43,19 +46,28 @@ namespace WebShop
 		});
 	    });
 
-	    services.AddScoped<IProductRepo, ProductRepo>();
-	    services.AddScoped<IProductService, ProductService>();
-	    services.AddScoped<IOrderRepo, OrderRepo>();
-	    services.AddScoped<IOrderService, OrderService>();
-	    services.AddControllersWithViews();
-	    services.AddControllers()
-		.AddNewtonsoftJson(options => {
-		    options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
-		    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-		});
-	    services.AddDbContext<DBWebShop>(options =>
-		    options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
-	}
+            services.AddScoped<IProductRepo, ProductRepo>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IOrderRepo, OrderRepo>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddControllersWithViews();
+            services.AddControllers()
+                .AddNewtonsoftJson(options => {
+                    options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                });
+            services.AddDbContext<DBWebShop>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
+            services.AddDbContext<AppIdentityDbContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
+
+            var builder = services.AddIdentityCore<AppUser>();
+            builder = new IdentityBuilder(builder.UserType, builder.Services);
+            builder.AddEntityFrameworkStores<AppIdentityDbContext>();
+            builder.AddSignInManager<SignInManager<AppUser>>();
+
+            services.AddAuthentication();
+        }
 
 	// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 	public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
