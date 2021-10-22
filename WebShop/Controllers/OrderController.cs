@@ -13,53 +13,51 @@ namespace WebShop.Controllers
     [ApiController]
     public class OrderController : Controller
     {
-        private readonly IOrderService _orderService;
-        public OrderController(IOrderService orderService)
-        {
-            _orderService = orderService;
-                
-        }
+	private readonly IOrderService _orderService;
+	public OrderController(IOrderService orderService)
+	{
+	    _orderService = orderService;
+	}
 
-        [HttpPost]
-        public IActionResult Create(CreateOrderViewModel createOrder)
-        {
-           
-            _orderService.Add(createOrder);
+	[HttpPost]
+	public IActionResult Create(CreateOrderViewModel createOrder)
+	{
+	    _orderService.Add(createOrder);
 
-            return NoContent();
-        }
+	    return NoContent();
+	}
 
-        [HttpGet]
-        [Route("GetAll")]
-        public IActionResult GetAll()
-        {
-            _orderService.All();
-            return View();
-        }
+	[HttpGet]
+	[Route("GetAll")]
+	public IActionResult GetAll()
+	{
+	    _orderService.All();
 
-        [HttpGet]
-        public ActionResult<Order> FindById(int id)
-        {
+	    return View();
+	}
 
-            return Ok(_orderService.FindBy(id));
-        }
+	[HttpGet]
+	public ActionResult<Order> FindById(int id)
+	{
+	    return Ok(_orderService.FindBy(id));
+	}
 
-        [HttpDelete("{id}")]
-        [Route("Delete")]
-        public ActionResult Delete(int id)
-        {
-            _orderService.Remove(id);
-            return NoContent();
-        }
+	[HttpDelete("{id}")]
+	[Route("Delete")]
+	public ActionResult Delete(int id)
+	{
+	    _orderService.Remove(id);
 
-        [HttpPut("{id}")]
-        [Route("Update")]
-        public IActionResult Update(int id, UpdateOrderViewModel oredrToUpdate)
-        {
-            _orderService.Edit(id, oredrToUpdate);
-            return NoContent();
-        }
+	    return NoContent();
+	}
 
+	[HttpPut("{id}")]
+	[Route("Update")]
+	public IActionResult Update(int id, UpdateOrderViewModel oredrToUpdate)
+	{
+	    _orderService.Edit(id, oredrToUpdate);
 
+	    return NoContent();
+	}
     }
 }
