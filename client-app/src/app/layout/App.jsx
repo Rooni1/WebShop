@@ -13,7 +13,6 @@ function App() {
   return (
     <>
       <Route
-<<<<<<< HEAD
 	path={'/(.+)'}
 	render={() => (
 	  <>
@@ -22,25 +21,11 @@ function App() {
 	      <Route exact path='/shop' component={ProductDashboard} />
 	      <Route path='/shop/:id' component={ProductDetails} />
 	      <Route path='/basket' component={Basket} />
+	      <Route exact path='/orderconfirm' component={OrderConfirm} />
 	    </Switch>
 	  </>
 
 	)}
-=======
-        path={'/(.+)'}
-        render={() => (
-          <>
-            <NavBar />
-            <Switch>
-              <Route exact path='/shop' component={ProductDashboard} />
-              <Route path='/shop/:id' component={ProductDetails} />
-              <Route path='/basket' component={Basket} />
-              <Route exact path='/orderconfirm' component={OrderConfirm} />
-            </Switch>
-          </>
-        
-        )}
->>>>>>> dca992345adc31f626f729b510d85ca731b64235
       />
     </>
   );

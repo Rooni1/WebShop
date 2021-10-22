@@ -40,17 +40,12 @@ axios.interceptors.response.use(async response => {
   return Promise.reject(error);
 })
 
-<<<<<<< HEAD
 function get (url) {
-    return axios.get(url).then((response) => response.data);
-=======
-function get (url) { 
   return axios.get(url).then((response) => response.data);
 }
 
 function post(url, order) {
   axios.post(url, order);
->>>>>>> dca992345adc31f626f729b510d85ca731b64235
 }
 
 function productList() {
@@ -61,15 +56,12 @@ function details(id) {
   return get(`/People/Get/${id}`);
 }
 
-<<<<<<< HEAD
-=======
 function placeOrder(order) {
   post(`/Order/Create`, order);
 }
-  
->>>>>>> dca992345adc31f626f729b510d85ca731b64235
+
 const agent = {
-  productList, 
+  productList,
   placeOrder
 }
 
