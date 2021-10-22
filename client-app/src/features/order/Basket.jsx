@@ -16,7 +16,7 @@ export default observer(function Basket() {
     let placeOrderFunction = orderStore.placeOrder;
     let bindedFunction = placeOrderFunction.bind(orderStore);
     bindedFunction();
-    history.push('/shop');
+    history.push('/orderconfirm');
   };
 
   
