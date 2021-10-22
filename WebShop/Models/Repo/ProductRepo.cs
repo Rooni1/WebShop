@@ -34,10 +34,9 @@ namespace WebShop.Models.Repo
 		ProductDimension = createProductVM.ProductDimension,
 		ProductLength = createProductVM.ProductLength,
 		ProductPrice = createProductVM.ProductPrice
-
 	    };
 	    _dBWebShop.Add(newProduct);
-	    _dBWebShop.SaveChanges();
+	    _dBWebShop.SaveChanges();   // commit
 	}
 
 	/// <summary>
@@ -48,33 +47,39 @@ namespace WebShop.Models.Repo
 	public void Delete(Product product)
 	{
 	    _dBWebShop.Remove(product);
-	    _dBWebShop.SaveChanges();
-
+	    _dBWebShop.SaveChanges(); // commit
 	}
 
 	/// <summary>
 	/// sortimentslista
 	/// </summary>
-	/// <returns></returns>
+	/// <returns>
+	/// en lista med instanser
+	/// </returns>
 	public List<Product> Read()
 	{
 	    return products = _dBWebShop.Product.ToList();
 	}
 
 	/// <summary>
-	/// sökning efter en viss produkt
+	/// Uppgifter om en viss artikel
 	/// </summary>
 	/// <param name="id"></param>
-	/// <returns>Product</returns>
+	/// <returns>
+	/// Product - en instans av den artikel det gäller
+	/// </returns>
 	public Product Read(int id)
 	{
 	    return _dBWebShop.Product.FirstOrDefault(x => x.ProductId == id);
 	}
 
 	/// <summary>
-	/// sökning efter en viss order
+	///  pris ?
+	///  ska den spärras för order ?
 	/// </summary>
-	/// <param name="product"></param>
+	/// <param name="product">
+	/// Product - en instans av den produkt som ska modifieras
+	/// </param>
 	/// <returns></returns>
 	public void Update(Product product)
 	{
