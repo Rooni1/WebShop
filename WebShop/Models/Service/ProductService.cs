@@ -32,8 +32,8 @@ namespace WebShop.Models.Service
 	/// <returns></returns>
 	public List<ProductViewModel> All()
 	{
-	    //List<ProductViewModel> products = new List<ProductViewModel>();
-	    //ProductViewModel product = new ProductViewModel { id = "1", name = "Gunnebo" };
+	    // List<ProductViewModel> products = new List<ProductViewModel>();
+	    // ProductViewModel product = new ProductViewModel { id = "1", name = "Gunnebo" };
 	    List<Product> entities = _productRepo.Read();
 	    List<ProductViewModel> products = new List<ProductViewModel>();
 	    foreach(Product entity in entities)
@@ -53,7 +53,7 @@ namespace WebShop.Models.Service
 	}
 
 	/// <summary>
-	///
+	/// modifiering av data om en viss produkt
 	/// </summary>
 	/// <param name="id"></param>
 	/// <param name="product"></param>
@@ -75,7 +75,6 @@ namespace WebShop.Models.Service
 	/// <returns></returns>
 	public ProductViewModel FindBy(int id)
 	{
-
 	    Product product = _productRepo.Read(id);
 
 	    ProductViewModel model = new ProductViewModel
@@ -89,7 +88,6 @@ namespace WebShop.Models.Service
 	    };
 
 	    return model;
-
 	}
 
 	/// <summary>
@@ -98,7 +96,6 @@ namespace WebShop.Models.Service
 	/// <param name="id"></param>
 	public void Remove(int id)
 	{
-
 	    Product productToRemove = _productRepo.Read(id);
 	    _productRepo.Delete(productToRemove);
 	}

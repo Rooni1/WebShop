@@ -12,20 +12,19 @@ namespace WebShop.Models.Repo
     public class ProductRepo : IProductRepo
     {
 	private readonly DBWebShop _dBWebShop;
-	// de här variablerna i modulen, behövs de ?
-	// i funktionerna där den används, där kan man ha en lokal
-	// variabel för den eller ev som List, returnera dbWebShop.Product.ToList direkt
+
 	private static List<Product> products = new List<Product>();
+
 	public ProductRepo(DBWebShop dBWebShop)
 	{
 	    _dBWebShop = dBWebShop;
 	}
 
-
 	/// <summary>
-	///
+	/// ny artikel i databasen
 	/// </summary>
 	/// <param name="createProductVM"></param>
+	/// <returns></returns>
 	public void Create(CreateProductViewModel createProductVM)
 	{
 	    Product newProduct = new Product
@@ -35,15 +34,16 @@ namespace WebShop.Models.Repo
 		ProductDimension = createProductVM.ProductDimension,
 		ProductLength = createProductVM.ProductLength,
 		ProductPrice = createProductVM.ProductPrice
-	     };
+	    };
 	    _dBWebShop.Add(newProduct);
 	    _dBWebShop.SaveChanges();   // commit
 	}
 
 	/// <summary>
-	///
+	/// borttagning av en viss artikel ur databasen
 	/// </summary>
 	/// <param name="product"></param>
+	/// <returns></returns>
 	public void Delete(Product product)
 	{
 	    _dBWebShop.Remove(product);
@@ -51,16 +51,14 @@ namespace WebShop.Models.Repo
 	}
 
 	/// <summary>
-	/// Dyr funktion - alla produkter i databasen
+	/// sortimentslista
 	/// </summary>
 	/// <returns>
 	/// en lista med instanser
 	/// </returns>
 	public List<Product> Read()
 	{
-	    //return products = _dBWebShop.Product.ToList();
-
-	     return _dBWebShop.Product.ToList();
+	    return products = _dBWebShop.Product.ToList();
 	}
 
 	/// <summary>
@@ -75,8 +73,6 @@ namespace WebShop.Models.Repo
 	    return _dBWebShop.Product.FirstOrDefault(x => x.ProductId == id);
 	}
 
-	///
-	/// något med en viss artikel har ändrats ?
 	/// <summary>
 	///  pris ?
 	///  ska den spärras för order ?
@@ -84,10 +80,7 @@ namespace WebShop.Models.Repo
 	/// <param name="product">
 	/// Product - en instans av den produkt som ska modifieras
 	/// </param>
-	/// <returns>
-	/// Product - modifierad instans
-	/// </returns>
-	///
+	/// <returns></returns>
 	public void Update(Product product)
 	{
 	    _dBWebShop.Update(product);

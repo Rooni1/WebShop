@@ -19,11 +19,10 @@ namespace WebShop.Models.Service
 	public OrderService(IOrderRepo orderRepo)
 	{
 	    _orderRepo = orderRepo;
-
 	}
 
 	/// <summary>
-	///
+	/// inläggning av order i systemet
 	/// </summary>
 	/// <param name="createOrder"></param>
 	public void Add(CreateOrderViewModel createOrder)
@@ -38,7 +37,6 @@ namespace WebShop.Models.Service
 	public List<OrderItem> All()
 	{
 	    return _orderRepo.Read();
-
 	}
 
 	/// <summary>
@@ -48,7 +46,6 @@ namespace WebShop.Models.Service
 	/// <param name="updateOrder"></param>
 	public void Edit(int id, UpdateOrderViewModel updateOrder)
 	{
-
 	    _orderRepo.Edit(id, updateOrder);
 	}
 

@@ -13,79 +13,59 @@ namespace WebShop.Models.Repo
     {
 	private readonly DBWebShop _dBWebShop;
 
-	//
-	// globala listor i modulen, varför ?
-	//
 	List<OrderItem> OrderItems = new List<OrderItem>();
 	List<Order> orders = new List<Order>();
+
 	public OrderRepo(DBWebShop dBWebShop)
 	{
 	    _dBWebShop = dBWebShop;
 	}
 
 	/// <summary>
+	/// lägg till varje orderrad i ordern i databasens tabell
 	///
+	/// för varje sak, utgående från produktId (artikelnummer) skapa ett
+	/// objekt för detta
 	/// </summary>
-	/// <param name="createOrder"></param>
-	public void Create(CreateOrderViewModel createOrder)
+	/// <param name="order"></param>
+	/// <param name="orderItems"></param>
+	public void SetOrderItems(Order order, List<OrderItem> orderItems)
 	{
-	    // så här ?
-	    // Order newOrder = new Order()
-	    // {
-	    //	//OrderId = createOrder.OrderId,
-	    //	OrderDate = createOrder.OrderDate
-	    // };
-	    // _dBWebShop.Add(newOrder);
-	    // foreach (OrderItem orderItem in createOrder.OrderItems)
-	    //     _dBWebShop.Add(new OrderItem
-	    //     {
-	    //         OrderId = newOrder.OrderId,
-	    //         ProductId = orderItem.ProductId,
-	    //         Quantity = orderItem.Quantity
-	    //     });
-	    //
-	    // väntar med SaveChanges tills att hela ordern är adderad, därefter SaveChanges (COMMIT)
-	    // _dBWebShop.SaveChanges();
-	    // Commit-tid
-	    // Märk
-	    // Funderar på vad som händer om något är fel i orderitem (specifikt ickeexisterane nyckel/productid
-	    // inuti manifestet exv.)
-	    // Det borde innebära att commit inte går igenom därför att dbcontext.add falerar (brott
-	    // mot kravet/constraint att det ska existera en produkt med rätt ProduktId)
-
-	    Order newOrder = new Order()
+	    if (orderItems != null)
 	    {
-		//OrderId = createOrder.OrderId,
-		OrderDate = createOrder.OrderDate
-	    };
-	    _dBWebShop.Add(newOrder);
-	    _dBWebShop.SaveChanges();
-	    for (int i = 0; i < createOrder.OrderItems.Count;  i++)
-	    {
-		OrderItem itemsOrdered = new OrderItem
+		foreach (OrderItem orderItem in orderItems)
 		{
-		    OrderId = newOrder.OrderId,
-		    Quantity = createOrder.OrderItems[i].Quantity,
-		    ProductId = createOrder.OrderItems[i].ProductId
-
-		};
-
-		_dBWebShop.Add(itemsOrdered);
-		_dBWebShop.SaveChanges();
+		    var newProduct = _dBWebShop.Product.FirstOrDefault(
+			p => p.ProductId == orderItem.ProductId);
+		    order.OrderItems.Add(new OrderItem
+		    {
+			Order = order,
+			Product = newProduct,
+			Quantity = orderItem.Quantity
+		    });
+		}
 	    }
 	}
 
 	/// <summary>
-	/// vad ska den göra ?
+	/// Utgående från en CreateOrderViewModel, skapa ordern i databasen
+	/// </summary>
+	/// <param name="createOrder"></param>
+	public void Create(CreateOrderViewModel createOrder)
+	{
+	    Order order = new Order();
+	    order.OrderDate = DateTime.Now;
+	    order.OrderItems = new List<OrderItem>();
+	    SetOrderItems(order, createOrder.OrderItems);
+
+	    _dBWebShop.Add(order);
+	    _dBWebShop.SaveChanges();
+	}
+
+	/// <summary>
+	/// hämta ut orderitems dvs raderna i en order/(alla ordrar ?)
 	/// </summary>
 	/// <returns></returns>
-	// public List<OrderItem> Read()
-	// {
-	//     List<OrderItem> orderItems = new List<OrderItem>();
-	//     orderItems = _dBWebShop.OrderItem.Include(o => o.Order).ToList();
-	//     orderItems = _dBWebShop.OrderItem.Include(p => p.Product).ToList();
-	//     return orderItems;
-	// }
 	public List<OrderItem> Read()
 	{
 	    OrderItems = _dBWebShop.OrderItem.Include(o => o.Order).ToList();
@@ -134,28 +114,14 @@ namespace WebShop.Models.Repo
 	/// <returns></returns>
 	public Order FindById(int Id)
 	{
-	    //
-	    // man behöver inte iterera igenom alla ordrar självt, låt databasen få göra sitt jobb
-	    // detta bör bli en 'select * from order where orderid = xxxxx;'
-	    //
-	    // Order bör orderid som index (nödvändigt därför att order särskiljs på sitt ID
-	    // och operationen för att addera en rad i databasen tar näst intill konstant tid om
-	    // det finns ett index som man kan kontrollera för att se om något redan finns.)
-	    //
-	    //
-	    orders = _dBWebShop.Order.ToList();
-	    foreach (Order item in orders)
-	    {
-		if (item.OrderId == Id)
-		{
-		    return item;
-		}
-	    }
-	    return null;
-
-	    // return _dBWebShop.Order.Single(order => order.OrderId == Id);
+	    return _dBWebShop.Order.Include(o => o.OrderItems).FirstOrDefault(x => x.OrderId == Id);
 	}
 
+	/// <summary>
+	/// borttagning av en viss order i databasen ?
+	/// </summary>
+	/// <param name="Id"></param>
+	/// <returns></returns>
 	public void Delete(int Id)
 	{
 	    Order OrderToDelete = FindById(Id);

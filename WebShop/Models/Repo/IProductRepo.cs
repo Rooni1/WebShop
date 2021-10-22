@@ -24,16 +24,24 @@ namespace WebShop.Models.Repo
 	List<Product> Read();
 
 	/// <summary>
-	/// Uppgifter om en viss produkt
+	/// Uppgifter om en viss artikel
 	/// </summary>
 	/// <param name="id"></param>
-	/// <returns></returns>
+	/// <returns>
+	/// Product - en instans av den artikel det gäller
+	/// </returns>
 	Product Read(int id);
 
 	/// <summary>
-	/// modifikation av läget för en viss produkt
+	///  pris ?
+	///  ska den spärras för order ?
 	/// </summary>
-	/// <param name="product"></param>
+	/// <param name="product">
+	/// Product - en instans av den produkt som ska modifieras
+	/// </param>
+	/// <returns>
+	/// </returns>
+	///
 	void Update(Product product);
 
 	/// <summary>

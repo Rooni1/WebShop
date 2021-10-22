@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { useStore } from '../../app/stores/store';
 
+import { Row, Col, Navbar, Nav } from 'react-bootstrap';
 import { history } from '../..';
 
 
