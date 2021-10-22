@@ -78,9 +78,9 @@ namespace WebShop.Controllers
 	/// <returns></returns>
 	[HttpPut("{id}")]
 	[Route("Update")]
-	public IActionResult Update(int id, UpdateOrderViewModel oredrToUpdate)
+	public IActionResult Update(int id, UpdateOrderViewModel orderToUpdate)
 	{
-	    _orderService.Edit(id, oredrToUpdate);
+	    _orderService.Edit(id, orderToUpdate);
 
 	    return NoContent();
 	}
