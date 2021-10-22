@@ -8,11 +8,9 @@ namespace WebShop.Models.Entities
 {
     public class Order
     {
-        [Key]
-        public int OrderId { get; set; } 
-        public DateTime OrderDate { get; set; }
-        public List<OrderItem> OrderItems { get; set; }
-        
-
+	[Key]
+	public int OrderId { get; set; }
+	public DateTime OrderDate { get; set; }
+	public List<OrderItem> OrderItems { get; set; }
     }
 }
