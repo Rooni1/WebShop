@@ -37,13 +37,15 @@ export default class OrderStore {
   }
 
   updateBasketItem = (item, value) => {
-    item.quantity = value;
-    this.basketRegistry.set(item.id, item);
-    this.total = this.basketItems.reduce((total, next, idx, array) => 
-      {
-        return total + (array[idx].productPrice * array[idx].quantity)
-      }, 0
-    );
+    if (!((item.quantity + value) < 2)) {
+      item.quantity = value;
+      this.basketRegistry.set(item.id, item);
+      this.total = this.basketItems.reduce((total, next, idx, array) => 
+        {
+          return total + (array[idx].productPrice * array[idx].quantity)
+        }, 0
+      );
+    }
     return item;
   }
 
