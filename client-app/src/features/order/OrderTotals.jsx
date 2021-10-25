@@ -27,11 +27,11 @@ export default observer(function OrderTotal() {
               </li>
               <li className="py-3 d-flex justify-content-between border-bottom">
                   <strong className="text-muted">Shipping and handling</strong>
-                  <strong>{totalSum ? 200 : 0}</strong>
+                  <strong>{totalSum ? 10 : 0}</strong>
               </li>
               <li className="py-3 d-flex justify-content-between border-bottom">
                   <strong className="text-muted">Total</strong>
-                  <strong>{totalSum ? totalSum + 200 : 0}</strong>
+                  <strong>{totalSum ? totalSum + 10 : 0}</strong>
               </li>
           </ul>
       </div>
