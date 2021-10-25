@@ -12,8 +12,10 @@ namespace WebShop.Models.Repo
     public class OrderRepo : IOrderRepo
     {
 	private readonly DBWebShop _dBWebShop;
+
 	List<OrderItem> OrderItems = new List<OrderItem>();
 	List<Order> orders = new List<Order>();
+
 	public OrderRepo(DBWebShop dBWebShop)
 	{
 	    _dBWebShop = dBWebShop;
@@ -45,7 +47,6 @@ namespace WebShop.Models.Repo
 	    }
 	}
 
-
 	/// <summary>
 	/// Utgående från en CreateOrderViewModel, skapa ordern i databasen
 	/// </summary>
@@ -72,7 +73,6 @@ namespace WebShop.Models.Repo
 
 	    return OrderItems;
 	}
-
 
 	/// <summary>
 	/// modifiering av en viss order

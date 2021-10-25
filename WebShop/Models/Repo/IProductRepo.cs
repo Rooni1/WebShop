@@ -32,8 +32,6 @@ namespace WebShop.Models.Repo
 	/// </returns>
 	Product Read(int id);
 
-	///
-	/// något med en viss artikel har ändrats ?
 	/// <summary>
 	///  pris ?
 	///  ska den spärras för order ?

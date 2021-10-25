@@ -10,19 +10,19 @@ axios.interceptors.response.use(async response => {
   switch (status) {
     case 400:
       if (typeof data === 'string') {
-        console.log(data);
+	console.log(data);
       }
       if (config.method === 'get' && data.errors.hasOwnProperty('id')) {
-        //history.push('/not-found');
+	//history.push('/not-found');
       }
       if (data.errors) {
-        const modalStateErrors = [];
-        for (const key in data.errors) {
-          if (data.errors[key]) {
-            modalStateErrors.push(data.errors[key]);
-          }
-          throw modalStateErrors.flat();
-        } 
+	const modalStateErrors = [];
+	for (const key in data.errors) {
+	  if (data.errors[key]) {
+	    modalStateErrors.push(data.errors[key]);
+	  }
+	  throw modalStateErrors.flat();
+	}
       }
       console.log('bad request');
       break;
@@ -40,7 +40,7 @@ axios.interceptors.response.use(async response => {
   return Promise.reject(error);
 })
 
-function get (url) { 
+function get (url) {
   return axios.get(url).then((response) => response.data);
 }
 
@@ -59,9 +59,9 @@ function details(id) {
 function placeOrder(order) {
   post(`/Order/Create`, order);
 }
-  
+
 const agent = {
-  productList, 
+  productList,
   placeOrder
 }
 
