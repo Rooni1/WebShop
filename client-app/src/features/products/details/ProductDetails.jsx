@@ -21,23 +21,21 @@ export default observer(function ProductDetails() {
         <div className="col-4 ms-4">
           <div className="row">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Screw_for_wood.JPG/256px-Screw_for_wood.JPG" alt="" className="img-fluid"></img>
-          </div>
-          <div className="row">
-            <div className="col-4">
-              <button className="btn btn-outline-secondary btn-lg">Till listan</button>
-            </div>
+            <div class="d-grid gap-2 mt-2">
+                <button className="btn btn-outline-secondary btn-block">Lägg i varukorg</button>
+                <button className="btn btn-outline-secondary">Till listan</button>
+              </div>
           </div>
         </div>
         <div className="col-4">
           <div className="d-flex justify-content-start align-items-center">
             <div className="ml-3 col-12">
-              <h4>Produktnamn</h4>
+              <h5>Produktnamn</h5>
               <p>{product.name}</p>
-              <h4>Produktbeskrivning</h4>
+              <h5>Produktbeskrivning</h5>
               <p>{product.productDescription}</p>
-              <h4>Pris</h4>
+              <h5>Pris</h5>
               <p>{product.productPrice}</p>
-              <button className="btn btn-outline-secondary btn-lg">Lägg i varukorg</button>
             </div>
           </div>
         </div>
