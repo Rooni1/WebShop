@@ -29,12 +29,6 @@ export default observer(function NavBar() {
         <h5 className="my-0 mr-md-auto font-weight-normal">WebShop</h5>
       </div>
       <div className="d-flex flex-column flex-md-row align-items-center">
-	<nav className="my-2 my-md-0 mr-md-3 text-uppercase" style={{fontSize: "larger;"}}>
-	  <a className="p-2 text-dark" href="#">Home</a>
-	  <Link to={`/shop`} className="p-2 text-dark">
-	    Shop
-	  </Link>
-	</nav>
       </div>
       <div className="d-flex justify-content-center">
 	<a className="position-relative me-2 ">
@@ -44,8 +38,6 @@ export default observer(function NavBar() {
 	    : <div></div>
 	  }
 	</a>
-	<a className="btn btn-outline-primary">Login</a>
-	<a className="ms-2 btn btn-outline-secondary">Sign up</a>
       </div>
     </div>
   )
