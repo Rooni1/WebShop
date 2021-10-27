@@ -13,7 +13,7 @@ namespace WebShop.Models.Repo
 	/// Inläggning av nya produkter i sortimentet
 	/// </summary>
 	/// <param name="createProductVM"></param>
-	void Create(CreateProductViewModel createProductVM);
+	Product Create(CreateProductViewModel createProductVM);
 
 	/// <summary>
 	/// Uthämtning av sortimentslista

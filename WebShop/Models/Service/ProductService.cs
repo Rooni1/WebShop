@@ -21,9 +21,9 @@ namespace WebShop.Models.Service
 	///
 	/// </summary>
 	/// <param name="product"></param>
-	public void Add(CreateProductViewModel product)
+	public Product Add(CreateProductViewModel product)
 	{
-	    _productRepo.Create(product);
+	    return _productRepo.Create(product);
 	}
 
 	/// <summary>
@@ -38,15 +38,15 @@ namespace WebShop.Models.Service
 	    List<ProductViewModel> products = new List<ProductViewModel>();
 	    foreach(Product entity in entities)
 	    {
-		ProductViewModel product = new ProductViewModel {
-		    id = entity.ProductId.ToString(),
-		    name = entity.ProductName,
-		    ProductDescription = entity.ProductDescription,
-		    ProductLength = entity.ProductLength,
-		    ProductDimension = entity.ProductDimension,
-		    ProductPrice = entity.ProductPrice
-		};
-		products.Add(product);
+			ProductViewModel product = new ProductViewModel {
+				id = entity.ProductId.ToString(),
+				name = entity.ProductName,
+				ProductDescription = entity.ProductDescription,
+				ProductLength = entity.ProductLength,
+				ProductDimension = entity.ProductDimension,
+				ProductPrice = entity.ProductPrice
+			};
+			products.Add(product);
 	    }
 
 	    return products;

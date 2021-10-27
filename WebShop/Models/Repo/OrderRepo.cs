@@ -39,9 +39,9 @@ namespace WebShop.Models.Repo
 			p => p.ProductId == orderItem.ProductId);
 		    order.OrderItems.Add(new OrderItem
 		    {
-			Order = order,
-			Product = newProduct,
-			Quantity = orderItem.Quantity
+				Order = order,
+				Product = newProduct,
+				Quantity = orderItem.Quantity
 		    });
 		}
 	    }
@@ -51,7 +51,7 @@ namespace WebShop.Models.Repo
 	/// Utgående från en CreateOrderViewModel, skapa ordern i databasen
 	/// </summary>
 	/// <param name="createOrder"></param>
-	public void Create(CreateOrderViewModel createOrder)
+	public Order Create(CreateOrderViewModel createOrder)
 	{
 	    Order order = new Order();
 	    order.OrderDate = DateTime.Now;
@@ -60,6 +60,7 @@ namespace WebShop.Models.Repo
 
 	    _dBWebShop.Add(order);
 	    _dBWebShop.SaveChanges();
+			return order;
 	}
 
 	/// <summary>
