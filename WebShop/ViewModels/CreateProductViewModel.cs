@@ -10,6 +10,7 @@ namespace WebShop.ViewModels
     {
         [Required]
         [MaxLength(50)]
+        public string id { get; set; }
         public string ProductName { get; set; }
         [Required]
         public string ProductDescription { get; set; }

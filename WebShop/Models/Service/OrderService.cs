@@ -25,9 +25,9 @@ namespace WebShop.Models.Service
 	/// inläggning av order i systemet
 	/// </summary>
 	/// <param name="createOrder"></param>
-	public void Add(CreateOrderViewModel createOrder)
+	public Order Add(CreateOrderViewModel createOrder)
 	{
-	    _orderRepo.Create(createOrder);
+	    return _orderRepo.Create(createOrder);
 	}
 
 	/// <summary>

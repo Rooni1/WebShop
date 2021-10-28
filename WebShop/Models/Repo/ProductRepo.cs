@@ -25,18 +25,19 @@ namespace WebShop.Models.Repo
 	/// </summary>
 	/// <param name="createProductVM"></param>
 	/// <returns></returns>
-	public void Create(CreateProductViewModel createProductVM)
+	public Product Create(CreateProductViewModel createProductVM)
 	{
 	    Product newProduct = new Product
 	    {
-		ProductName = createProductVM.ProductName,
-		ProductDescription = createProductVM.ProductDescription,
-		ProductDimension = createProductVM.ProductDimension,
-		ProductLength = createProductVM.ProductLength,
-		ProductPrice = createProductVM.ProductPrice
+			ProductName = createProductVM.ProductName,
+			ProductDescription = createProductVM.ProductDescription,
+			ProductDimension = createProductVM.ProductDimension,
+			ProductLength = createProductVM.ProductLength,
+			ProductPrice = createProductVM.ProductPrice
 	    };
 	    _dBWebShop.Add(newProduct);
 	    _dBWebShop.SaveChanges();   // commit
+			return newProduct;
 	}
 
 	/// <summary>

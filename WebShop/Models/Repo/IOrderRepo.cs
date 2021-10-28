@@ -13,7 +13,7 @@ namespace WebShop.Models.Repo
 	/// hur man får en varukorg att bli en order i systemet (databasen)
 	/// </summary>
 	/// <param name="createOrder"></param>
-	void Create(CreateOrderViewModel createOrder);
+	Order Create(CreateOrderViewModel createOrder);
 
 	/// <summary>
 	/// sökning efter en viss order
