@@ -1,8 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿//
+// Time-stamp: <2021-10-31 17:16:46 stefan>
+//
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+using Microsoft.EntityFrameworkCore;
+
 using WebShop.Data;
 using WebShop.Models.Entities;
 using WebShop.ViewModels;
