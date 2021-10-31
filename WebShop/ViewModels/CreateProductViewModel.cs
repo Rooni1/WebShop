@@ -1,4 +1,8 @@
-﻿using System;
+﻿//
+// Time-stamp: <2021-10-31 17:59:19 stefan>
+//
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,17 +12,17 @@ namespace WebShop.ViewModels
 {
     public class CreateProductViewModel
     {
-        [Required]
-        [MaxLength(50)]
-        public string id { get; set; }
-        public string ProductName { get; set; }
-        [Required]
-        public string ProductDescription { get; set; }
-        [Required]
-        public float ProductLength { get; set; }
-        [Required]
-        public float ProductDimension { get; set; }
-        [Required]
-        public float ProductPrice { get; set; }
+	[Required]
+	[MaxLength(50)]
+	public string id { get; set; }
+	public string ProductName { get; set; }
+	[Required]
+	public string ProductDescription { get; set; }
+	[Required]
+	public float ProductLength { get; set; }
+	[Required]
+	public float ProductDimension { get; set; }
+	[Required]
+	public float ProductPrice { get; set; }
     }
 }
