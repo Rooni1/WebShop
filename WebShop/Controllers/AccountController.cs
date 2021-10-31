@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿// Time-stamp: <2021-10-31 15:52:53 stefan>
+
 using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+
 using WebShop.Models.Entities.Identity;
 using WebShop.ViewModels;
 
