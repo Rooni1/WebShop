@@ -1,4 +1,4 @@
-﻿// Time-stamp: <2021-10-31 15:52:53 stefan>
+﻿// Time-stamp: <2021-10-31 16:05:41 stefan>
 
 using System.Threading.Tasks;
 
@@ -15,17 +15,22 @@ namespace WebShop.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
+	private readonly ILogger<AccountController> _loggdest;
 	private readonly UserManager<AppUser> _userManager;
 	private readonly SignInManager<AppUser> _signInManager;
 
-	public AccountController(
-	    UserManager<AppUser> userManager,
-	    SignInManager<AppUser> signInManager)
+	public AccountController( ILogger<AccountController> loggdest,
+				  UserManager<AppUser> userManager,
+				  SignInManager<AppUser> signInManager)
 	{
+	    _loggdest = loggdest;
 	    _userManager = userManager;
 	    _signInManager = signInManager;
 	}
 
+	/// <summary>
+	/// inloggning mha Identity Manager
+	/// </summary>
 	[HttpPost]
 	public async Task<ActionResult<UserViewModel>> Login(LoginViewModel loginModel)
 	{
