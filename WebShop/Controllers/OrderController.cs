@@ -1,4 +1,4 @@
-﻿// Time-stamp: <2021-10-31 15:49:42 stefan>
+﻿// Time-stamp: <2021-10-31 16:15:41 stefan>
 
 using System;
 using System.Collections.Generic;
@@ -48,7 +48,6 @@ namespace WebShop.Controllers
 	/// <summary>
 	/// returnera data om alla existerande ordrar i systemet
 	/// </summary>
-	/// <returns></returns>
 	[HttpGet]
 	[Route("GetAll")]
 	public IActionResult GetAll()

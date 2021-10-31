@@ -1,4 +1,4 @@
-﻿// Time-stamp: <2021-10-31 16:09:04 stefan>
+﻿// Time-stamp: <2021-10-31 16:46:16 stefan>
 
 using System.Collections.Generic;
 
@@ -31,11 +31,11 @@ namespace WebShop.Controllers
 	/// </summary>
 	/// <returns>ActionResult<List<ProductViewModel>></returns>
 	[HttpGet]
-	public ActionResult<List<ProductViewModel>> GetAll()
+	public ActionResult<List<ProductViewModel>> GetAll()  // API mot JS
 	{
-	    List<ProductViewModel> products = _productService.All();
+	    _loggdest.LogInformation( "public ActionResult<List<ProductViewModel>> GetAll()");
 
-	    return Ok(products);
+	    return Ok( _productService.All());
 	}
 
 	/// <summary>
@@ -44,8 +44,10 @@ namespace WebShop.Controllers
 	/// <param name="id"></param>
 	/// <returns>Product</returns>
 	[HttpGet("{id}")]
-	public ActionResult<ProductViewModel> Get(int id)
+	public ActionResult<ProductViewModel> Get(int id)  // API mot JS
 	{
+	    _loggdest.LogInformation( "public ActionResult<ProductViewModel> Get(int id)");
+
 	    ProductViewModel product = _productService.FindBy(id);
 
 	    return Ok(product);
@@ -55,8 +57,10 @@ namespace WebShop.Controllers
 	///
 	/// </summary>
 	[HttpPost]
-	public ActionResult Create([FromBody] CreateProductViewModel product)
+	public ActionResult Create([FromBody] CreateProductViewModel product)  // API mot JS
 	{
+	    _loggdest.LogInformation( "public ActionResult Create([FromBody] CreateProductViewModel product)");
+
 	    _productService.Add(product);
 
 	    return NoContent();
@@ -67,8 +71,10 @@ namespace WebShop.Controllers
 	/// </summary>
 	[HttpPut("{id}")]
 	[Route("Update")]
-	public IActionResult Update(int id, UpdateProductViewModel product)
+	public IActionResult Update(int id, UpdateProductViewModel product)  // API mot JS
 	{
+	    _loggdest.LogInformation( "public IActionResult Update(int id, UpdateProductViewModel product)");
+
 	    _productService.Edit(id,product);
 
 	    return NoContent();
@@ -79,8 +85,10 @@ namespace WebShop.Controllers
 	/// </summary>
 	[HttpDelete("{id}")]
 	[Route("Delete")]
-	public ActionResult Delete(int id)
+	public ActionResult Delete(int id)  // API mot JS
 	{
+	    _loggdest.LogInformation( "public ActionResult Delete(int id)");
+
 	    _productService.Remove(id);
 
 	    return NoContent();
