@@ -1,4 +1,4 @@
-﻿// Time-stamp: <2021-10-31 15:52:43 stefan>
+﻿// Time-stamp: <2021-10-31 16:01:54 stefan>
 
 using System.Collections.Generic;
 
@@ -14,13 +14,20 @@ namespace WebShop.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
+	private readonly ILogger<ProductController> _loggdest;
 	private readonly IProductService _productService;
 
-	public ProductController(IProductService productService)
+	public ProductController( ILogger<ProductController> loggdest,
+				  IProductService productService)
 	{
+	    _loggdest=loggdest;
 	    _productService = productService;
 	}
 
+	/// <summary>
+	/// få ut en vymodell med produkterna
+	/// </summary>
+	/// <returns>ActionResult<List<ProductViewModel>></returns>
 	[HttpGet]
 	public ActionResult<List<ProductViewModel>> GetAll()
 	{
@@ -29,6 +36,11 @@ namespace WebShop.Controllers
 	    return Ok(products);
 	}
 
+	/// <summary>
+	/// Få uppgifter om en viss produkt
+	/// </summary>
+	/// <param name="id"></param>
+	/// <returns>Product</returns>
 	[HttpGet("{id}")]
 	public ActionResult<ProductViewModel> Get(int id)
 	{
@@ -37,6 +49,9 @@ namespace WebShop.Controllers
 	    return Ok(product);
 	}
 
+	/// <summary>
+	///
+	/// </summary>
 	[HttpPost]
 	public ActionResult Create([FromBody] CreateProductViewModel product)
 	{
@@ -45,6 +60,9 @@ namespace WebShop.Controllers
 	    return NoContent();
 	}
 
+	/// <summary>
+	/// modifiering i sortimentet av uppgifter om en viss produkt
+	/// </summary>
 	[HttpPut("{id}")]
 	[Route("Update")]
 	public IActionResult Update(int id, UpdateProductViewModel product)
@@ -54,6 +72,9 @@ namespace WebShop.Controllers
 	    return NoContent();
 	}
 
+	/// <summary>
+	/// slutlig borttagning av en viss produkt i sortimentet
+	/// </summary>
 	[HttpDelete("{id}")]
 	[Route("Delete")]
 	public ActionResult Delete(int id)
