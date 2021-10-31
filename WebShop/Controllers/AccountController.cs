@@ -1,9 +1,11 @@
-﻿// Time-stamp: <2021-10-31 16:05:41 stefan>
+﻿// Time-stamp: <2021-10-31 16:08:48 stefan>
 
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
 
 using WebShop.Models.Entities.Identity;
 using WebShop.ViewModels;

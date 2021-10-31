@@ -1,8 +1,10 @@
-﻿// Time-stamp: <2021-10-31 16:01:54 stefan>
+﻿// Time-stamp: <2021-10-31 16:09:04 stefan>
 
 using System.Collections.Generic;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
 
 using WebShop.Models.Entities;
 using WebShop.Models.Service;
