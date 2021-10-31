@@ -1,3 +1,7 @@
+//
+// Time-stamp: <2021-10-31 18:06:17 stefan>
+//
+
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://localhost:44313/api';
