@@ -24,7 +24,7 @@ namespace WebShop
     {
 	public static async Task Main(string[] args)
 	{
-	    var host = CreateHostBuilder(args).Build();
+	    var host = CreateHostBuilder(args: args).Build();
 
 	    using var scope = host.Services.CreateScope();
 	    var services = scope.ServiceProvider;
@@ -47,8 +47,12 @@ namespace WebShop
 	    host.Run();
 	}
 
-	public static IHostBuilder CreateHostBuilder(string[] args) =>
-	    Host.CreateDefaultBuilder(args)
+	public static IHostBuilder CreateHostBuilder(string[] args) => Host
+	    .CreateDefaultBuilder(args: args)
+	    .ConfigureLogging( logging => {
+		logging.ClearProviders();
+		logging.AddConsole();
+	    } )
 	    .ConfigureWebHostDefaults(webBuilder =>
 	    {
 		webBuilder.UseStartup<Startup>();
