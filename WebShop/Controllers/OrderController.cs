@@ -20,9 +20,13 @@ namespace WebShop.Controllers
     [ApiController]
     public class OrderController : Controller
     {
+	private readonly ILogger<OrderController> _loggdest;
 	private readonly IOrderService _orderService;
-	public OrderController(IOrderService orderService)
+
+	public OrderController( ILogger<OrderController> loggdest,
+				IOrderService orderService)
 	{
+	    _loggdest = loggdest;
 	    _orderService = orderService;
 	}
 
@@ -34,6 +38,8 @@ namespace WebShop.Controllers
 	[HttpPost]
 	public IActionResult Create(CreateOrderViewModel createOrder)
 	{
+	    _loggdest.LogInformation( "Create([FromBody] CreateOrderViewModel createOrder)");
+
 	    _orderService.Add(createOrder);
 
 	    return NoContent();
