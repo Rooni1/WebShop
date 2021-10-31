@@ -1,5 +1,5 @@
 ﻿//
-// Time-stamp: <2021-10-31 17:21:46 stefan>
+// Time-stamp: <2021-10-31 18:26:18 stefan>
 //
 
 using System;
@@ -85,8 +85,8 @@ namespace WebShop.Models.Repo
 
 	    Order newOrder = new Order()
 	    {
-		OrderDate = DateTime.Now;
-		OrderItems = new List<OrderItem>();
+		OrderDate = DateTime.Now,
+		OrderItems = new List<OrderItem>()
 	    };
 	    SetOrderItems(newOrder, createOrder.OrderItems);
 
