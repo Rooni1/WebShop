@@ -1,3 +1,7 @@
+//
+// Time-stamp: <2021-10-31 18:11:13 stefan>
+//
+
 import { makeAutoObservable, runInAction } from "mobx";
 
 import agent from "../api/agent";
@@ -20,7 +24,7 @@ export default class ProductStore {
     this.loadingInitial = true;
     try {
       await agent.productList().then(data => data.forEach(product => this.setProduct(product)));
-      this.setLoadingInitial(false);      
+      this.setLoadingInitial(false);
     } catch (error) {
       console.log(error);
       this.setLoadingInitial(false);
@@ -35,16 +39,16 @@ export default class ProductStore {
     } else {
       this.loadingInitial = true;
       try {
-        product = await agent.Products.details(id);
-        this.setProduct(product);
-        //runInAction(() => {
-          this.selectedProduct = product;
-        //});        
-        this.setLoadingInitial(false);
-        return product;
+	product = await agent.Products.details(id);
+	this.setProduct(product);
+	//runInAction(() => {
+	  this.selectedProduct = product;
+	//});
+	this.setLoadingInitial(false);
+	return product;
       } catch (error) {
-        console.log(error);
-        //this.setLoadingInitial(false);
+	console.log(error);
+	//this.setLoadingInitial(false);
       }
     }
   }

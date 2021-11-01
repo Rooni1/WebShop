@@ -1,8 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿//
+// Time-stamp: <2021-10-31 18:26:18 stefan>
+//
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+using Microsoft.EntityFrameworkCore;
+
 using WebShop.Data;
 using WebShop.Models.Entities;
 using WebShop.ViewModels;
@@ -53,14 +59,41 @@ namespace WebShop.Models.Repo
 	/// <param name="createOrder"></param>
 	public Order Create(CreateOrderViewModel createOrder)
 	{
-	    Order order = new Order();
-	    order.OrderDate = DateTime.Now;
-	    order.OrderItems = new List<OrderItem>();
-	    SetOrderItems(order, createOrder.OrderItems);
+	    // så här ?
+	    // Order newOrder = new Order()
+	    // {
+	    //	//OrderId = createOrder.OrderId,
+	    //	OrderDate = createOrder.OrderDate
+	    // };
+	    // _dBWebShop.Add(newOrder);
+	    // foreach (OrderItem orderItem in createOrder.OrderItems)
+	    //     _dBWebShop.Add(new OrderItem
+	    //     {
+	    //         OrderId = newOrder.OrderId,
+	    //         ProductId = orderItem.ProductId,
+	    //         Quantity = orderItem.Quantity
+	    //     });
+	    //
+	    // väntar med SaveChanges tills att hela ordern är adderad, därefter SaveChanges (COMMIT)
+	    // _dBWebShop.SaveChanges();
+	    // Commit-tid
+	    // Märk
+	    // Funderar på vad som händer om något är fel i orderitem (specifikt ickeexisterane nyckel/productid
+	    // inuti manifestet exv.)
+	    // Det borde innebära att commit inte går igenom därför att dbcontext.add falerar (brott
+	    // mot kravet/constraint att det ska existera en produkt med rätt ProduktId)
 
-	    _dBWebShop.Add(order);
+	    Order newOrder = new Order()
+	    {
+		OrderDate = DateTime.Now,
+		OrderItems = new List<OrderItem>()
+	    };
+	    SetOrderItems(newOrder, createOrder.OrderItems);
+
+	    _dBWebShop.Add(newOrder);
 	    _dBWebShop.SaveChanges();
-			return order;
+
+	    return newOrder;
 	}
 
 	/// <summary>

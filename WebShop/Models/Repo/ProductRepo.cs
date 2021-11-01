@@ -1,8 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿//
+// Time-stamp: <2021-10-31 17:30:22 stefan>
+//
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+using Microsoft.EntityFrameworkCore;
+
 using WebShop.Data;
 using WebShop.Models.Entities;
 using WebShop.ViewModels;
@@ -29,15 +35,15 @@ namespace WebShop.Models.Repo
 	{
 	    Product newProduct = new Product
 	    {
-			ProductName = createProductVM.ProductName,
-			ProductDescription = createProductVM.ProductDescription,
-			ProductDimension = createProductVM.ProductDimension,
-			ProductLength = createProductVM.ProductLength,
-			ProductPrice = createProductVM.ProductPrice
+		ProductName = createProductVM.ProductName,
+		ProductDescription = createProductVM.ProductDescription,
+		ProductDimension = createProductVM.ProductDimension,
+		ProductLength = createProductVM.ProductLength,
+		ProductPrice = createProductVM.ProductPrice
 	    };
 	    _dBWebShop.Add(newProduct);
 	    _dBWebShop.SaveChanges();   // commit
-			return newProduct;
+	    return newProduct;
 	}
 
 	/// <summary>
@@ -59,7 +65,7 @@ namespace WebShop.Models.Repo
 	/// </returns>
 	public List<Product> Read()
 	{
-	    return products = _dBWebShop.Product.ToList();
+	    return _dBWebShop.Product.ToList();
 	}
 
 	/// <summary>
@@ -81,7 +87,6 @@ namespace WebShop.Models.Repo
 	/// <param name="product">
 	/// Product - en instans av den produkt som ska modifieras
 	/// </param>
-	/// <returns></returns>
 	public void Update(Product product)
 	{
 	    _dBWebShop.Update(product);

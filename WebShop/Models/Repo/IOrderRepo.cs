@@ -1,7 +1,12 @@
-﻿using System;
+﻿//
+// Time-stamp: <2021-10-31 17:07:05 stefan>
+//
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using WebShop.Models.Entities;
 using WebShop.ViewModels;
 

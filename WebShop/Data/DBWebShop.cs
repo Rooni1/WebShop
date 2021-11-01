@@ -1,17 +1,33 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿// Time-stamp: <2021-10-31 16:56:42 stefan>
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+using Microsoft.EntityFrameworkCore;
+
 using WebShop.Models.Entities;
 
 namespace WebShop.Data
 {
     public class DBWebShop : DbContext
     {
+	public DbSet<Product> Product { get; set; }
+	public DbSet<Order> Order { get; set; }
+	public DbSet<OrderItem> OrderItem { get; set; }
+
 	public DBWebShop(DbContextOptions<DBWebShop> options) : base(options)
 	{
 	}
+
+	/// <summary>
+	/// Använder PostgreSQL istället för MS SQL som database
+	/// Istället för att via appsettings*.json sätta anslutningssträngarna kan man göra så här istället
+	/// </summary>
+	// protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+	//     => optionsBuilder.UseNpgsql("Host=localhost;Database=webshop;Username=stefan;Password=TestWebShop");
+
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 	    base.OnModelCreating(modelBuilder);
@@ -134,9 +150,5 @@ namespace WebShop.Data
 		}
 		);
 	}
-
-	public DbSet<Product> Product { get; set; }
-	public DbSet<Order> Order { get; set; }
-	public DbSet<OrderItem> OrderItem { get; set; }
     }
 }

@@ -1,8 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿// Time-stamp: <2021-10-31 16:15:41 stefan>
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
+
 using WebShop.Models.Entities;
 using WebShop.Models.Service;
 using WebShop.ViewModels;
@@ -13,9 +20,13 @@ namespace WebShop.Controllers
     [ApiController]
     public class OrderController : Controller
     {
+	private readonly ILogger<OrderController> _loggdest;
 	private readonly IOrderService _orderService;
-	public OrderController(IOrderService orderService)
+
+	public OrderController( ILogger<OrderController> loggdest,
+				IOrderService orderService)
 	{
+	    _loggdest = loggdest;
 	    _orderService = orderService;
 	}
 
@@ -27,6 +38,8 @@ namespace WebShop.Controllers
 	[HttpPost]
 	public IActionResult Create(CreateOrderViewModel createOrder)
 	{
+	    _loggdest.LogInformation( "Create([FromBody] CreateOrderViewModel createOrder)");
+
 	    _orderService.Add(createOrder);
 
 	    return NoContent();
@@ -35,7 +48,6 @@ namespace WebShop.Controllers
 	/// <summary>
 	/// returnera data om alla existerande ordrar i systemet
 	/// </summary>
-	/// <returns></returns>
 	[HttpGet]
 	[Route("GetAll")]
 	public IActionResult GetAll()

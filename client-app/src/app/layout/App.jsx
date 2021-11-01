@@ -1,3 +1,7 @@
+//
+// Time-stamp: <2021-10-31 18:07:27 stefan>
+//
+
 import React from 'react';
 import { Route, Switch, useLocation } from 'react-router';
 

@@ -1,3 +1,7 @@
+//
+// Time-stamp: <2021-10-31 18:10:08 stefan>
+//
+
 import { makeAutoObservable, runInAction } from "mobx";
 
 import agent from "../api/agent";
@@ -29,9 +33,9 @@ export default class OrderStore {
       const newBasketItem =  this.mapProductItemToBasketItem(product, 1);
       this.basketRegistry.set(product.id, newBasketItem);
     }
-    this.total = this.basketItems.reduce((total, next, idx, array) => 
+    this.total = this.basketItems.reduce((total, next, idx, array) =>
       {
-        return total + (array[idx].productPrice * array[idx].quantity)
+	return total + (array[idx].productPrice * array[idx].quantity)
       }, 0
     );
   }
@@ -40,10 +44,10 @@ export default class OrderStore {
     if (!((item.quantity + value) < 2)) {
       item.quantity = value;
       this.basketRegistry.set(item.id, item);
-      this.total = this.basketItems.reduce((total, next, idx, array) => 
-        {
-          return total + (array[idx].productPrice * array[idx].quantity)
-        }, 0
+      this.total = this.basketItems.reduce((total, next, idx, array) =>
+	{
+	  return total + (array[idx].productPrice * array[idx].quantity)
+	}, 0
       );
     }
     return item;
@@ -51,16 +55,16 @@ export default class OrderStore {
 
   deleteBasketItem(id) {
     this.basketRegistry.delete(id);
-    this.total = this.basketItems.reduce((total, next, idx, array) => 
+    this.total = this.basketItems.reduce((total, next, idx, array) =>
       {
-        return total + (array[idx].productPrice * array[idx].quantity)
+	return total + (array[idx].productPrice * array[idx].quantity)
       }, 0
     );
   }
 
   mapProductItemToBasketItem = (product, quantity) => {
     return {
-      id: product.id, 
+      id: product.id,
       name: product.name,
       quantity: quantity,
       productPrice: product.productPrice
@@ -75,10 +79,10 @@ export default class OrderStore {
     let order = {OrderItems : []}
     this.basketItems.map(item => order.OrderItems.push(
       {
-        "ProductId": parseInt(item.id),
-        "Quantity": item.quantity
+	"ProductId": parseInt(item.id),
+	"Quantity": item.quantity
       }));
-    
+
     console.log('debug');
     agent.placeOrder(order);
     this.basketRegistry = new Map();
