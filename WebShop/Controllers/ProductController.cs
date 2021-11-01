@@ -1,4 +1,4 @@
-﻿// Time-stamp: <2021-10-31 16:46:16 stefan>
+﻿// Time-stamp: <2021-11-01 22:31:03 stefan>
 
 using System.Collections.Generic;
 
@@ -35,7 +35,11 @@ namespace WebShop.Controllers
 	{
 	    _loggdest.LogInformation( "public ActionResult<List<ProductViewModel>> GetAll()");
 
-	    return Ok( _productService.All());
+	    List<ProductViewModel> products = _productService.All();
+
+	    return Ok(products);
+
+	    //return Ok( _productService.All());
 	}
 
 	/// <summary>
